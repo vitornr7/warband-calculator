@@ -1,32 +1,34 @@
-const companions = document.querySelector('#companions')
+const companions = document.querySelector('#selected-heroes')
 
-const heroPanel = document.createElement('section')
+const heroPanel = document.createElement('div')
 heroPanel.classList.add('hero-panel')
 
 
 const info = (name) => {
-    const heroInfo = document.createElement('section')
+    const infoSection = document.createElement('div')
 
     const portrait = document.createElement('div')
-    const heroName = document.createElement('h2')
+    const heroName = document.createElement('div')
+
+    infoSection.classList.add('hp-info')
 
     heroName.innerText = name
     portrait.classList.add('box')
 
-    heroInfo.append(portrait)
-    heroInfo.append(heroName)
+    infoSection.append(portrait)
+    infoSection.append(heroName)
 
-    return heroInfo
+    return infoSection
 }
 
 const skillLevel = (lbl, lvl) => {
     const li = document.createElement('li')
 
-    const label = document.createElement('p')
+    const label = document.createElement('div')
 
-    const lvlPanel = document.createElement('span')
+    const lvlPanel = document.createElement('div')
     const btnSub = document.createElement('button')
-    const level = document.createElement('p')
+    const level = document.createElement('div')
     const btnAdd = document.createElement('button')
 
     label.innerText = lbl
@@ -45,13 +47,32 @@ const skillLevel = (lbl, lvl) => {
     return li
 }
 
-const attributes = () => {
+const attributes = (attr) => {
+    const attrSection = document.createElement('div')
 
+    const title = document.createElement('div')
+    title.innerText = "Attributes"
+
+    const attrList = document.createElement('ul')
+    const str = skillLevel('STR', attr.str)
+    const agi = skillLevel('AGI', attr.agi)
+    const int = skillLevel('INT', attr.int)
+    const cha = skillLevel('CHA', attr.cha)
+
+    attrList.append(str)
+    attrList.append(agi)
+    attrList.append(int)
+    attrList.append(cha)
+
+    attrSection.append(title)
+    attrSection.append(attrList)
+
+    return attrSection
 }
 
 const skills = () => {
     const sec = document.createElement('section')
-    const title = document.createElement('h2')
+    const title = document.createElement('p')
     title.innerText = 'Skills'
 
     const skillName = document.createElement('p')
@@ -62,7 +83,7 @@ const skills = () => {
 
 const hero = []
 hero.push(info('Ymira'))
-hero.push(skillLevel("STR", "15"))
+hero.push(attributes({ str: 6, agi: 9, int: 11, cha: 6 }))
 
 hero.forEach(element => {
     heroPanel.append(element)
