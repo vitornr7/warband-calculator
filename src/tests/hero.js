@@ -1,8 +1,8 @@
-const get_info = (...info) => {
+const get_info = (name, level) => {
     return {
-        name: info[0],
-        level: info[1],
-        hp: info[2]
+        name,
+        level,
+        hp: 0
     }
 }
 
@@ -52,7 +52,7 @@ const hero = (info, attributes, skills) => {
     }
 }
 
-const ymira = hero(["Ymira", 1, 45], [7, 7, 8, 9], {})
+const ymira = hero(["Ymira", 1], [7, 7, 8, 9], {})
 const marnid = hero(["Marnid", 2, 46], [10, 11, 10, 6], { ironflesh: 3 })
 
 console.log(ymira)
