@@ -8,7 +8,7 @@ const createHeroPanel = (hero) => {
     return panel
 }
 
-const createInfoPanel = (name) => {
+const createInfoSection = (name) => {
     const infoSection = document.createElement('section')
 
     const portrait = document.createElement('div')
@@ -51,7 +51,7 @@ const createLevelController = (lbl, lvl) => {
     return li
 }
 
-const createAttributesPanel = (attr) => {
+const createAttributesSection = (attr) => {
     const attrSection = document.createElement('section')
 
     const title = document.createElement('h2')
@@ -74,15 +74,12 @@ const createAttributesPanel = (attr) => {
     return attrSection
 }
 
-const skills = () => {
-    const sec = document.createElement('section')
-    const title = document.createElement('p')
-    title.innerText = 'Skills'
+const createSStatsSection = () => {
 
-    const skillName = document.createElement('p')
+}
 
-    sec.append(title)
-    return sec
+const createSkillsSection = () => {
+
 }
 
 const ymira = {
@@ -120,8 +117,8 @@ const hero = []
 
 const heroPanel = createHeroPanel('yimira-panel')
 
-hero.push(createInfoPanel(ymira.info.name))
-hero.push(createAttributesPanel(ymira.attributes))
+hero.push(createInfoSection(ymira.info.name))
+hero.push(createAttributesSection(ymira.attributes))
 
 hero.forEach(element => {
     heroPanel.append(element)
