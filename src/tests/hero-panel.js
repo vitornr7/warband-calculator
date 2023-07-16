@@ -23,6 +23,20 @@ const createInfoSection = (name) => {
     return infoSection
 }
 
+const createStatsSection = (stats) => {
+    const statsSection = document.createElement('section')
+
+    const level = createLevelController('Level', stats.level)
+    const health = document.createElement('p')
+
+    health.innerText = "Health: " + stats.hp
+
+    statsSection.append(level)
+    statsSection.append(health)
+
+    return statsSection
+}
+
 const createLevelController = (lbl, lvl) => {
     const li = document.createElement('li')
 
@@ -74,16 +88,12 @@ const createAttributesSection = (attr) => {
     return attrSection
 }
 
-const createSStatsSection = () => {
-
-}
-
 const createSkillsSection = () => {
 
 }
 
 const ymira = {
-    info: { name: 'Ymira', level: 1, hp: 0 },
+    info: { name: 'Ymira', level: 1, hp: 41 },
     attributes: { str: 6, agi: 9, int: 11, cha: 6 },
     skills: {
         ironflesh: 0,
@@ -113,15 +123,14 @@ const ymira = {
     }
 }
 
-const hero = []
+const ymiraPanel = createHeroPanel('yimira-panel')
 
-const heroPanel = createHeroPanel('yimira-panel')
+const ymiraSec = createInfoSection(ymira.info.name)
+const ymiraAttr = createAttributesSection(ymira.attributes)
+const ymiraStats = createStatsSection(ymira.info)
 
-hero.push(createInfoSection(ymira.info.name))
-hero.push(createAttributesSection(ymira.attributes))
+ymiraPanel.append(ymiraSec)
+ymiraPanel.append(ymiraStats)
+ymiraPanel.append(ymiraAttr)
 
-hero.forEach(element => {
-    heroPanel.append(element)
-});
-
-companions.append(heroPanel)
+companions.append(ymiraPanel)
