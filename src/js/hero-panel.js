@@ -8,7 +8,7 @@ const createHeroPanel = (id) => {
     return panel
 }
 
-const createLevelController = (lbl, lvl) => {
+const createLevelController = (lbl, lvl, callbackUp, callbackDown) => {
     const li = document.createElement('li')
 
     const label = document.createElement('div')
@@ -25,10 +25,13 @@ const createLevelController = (lbl, lvl) => {
     btnAdd.innerText = "+"
 
     btnAdd.onclick = () => {
-
+        let lvl = callbackUp()
+        level.innerText = lvl
     }
-    btnSub.onclick = () => {
 
+    btnSub.onclick = () => {
+        let lvl = callbackDown()
+        level.innerText = lvl
     }
 
     lvlPanel.classList.add('lvl-controller')
@@ -43,20 +46,20 @@ const createLevelController = (lbl, lvl) => {
     return li
 }
 
-const createInfoSection = (info) => {
+const createInfoSection = (hero) => {
     const section = document.createElement('section')
 
     const portrait = document.createElement('div')
     const heroName = document.createElement('h2')
     const list = document.createElement('ul')
-
-    const level = createLevelController('Level:', info.level)
     const health = document.createElement('li')
 
-    heroName.innerText = info.name
+    const level = createLevelController('Level:', hero.info.level, hero.lvlUp.bind(hero), hero.lvlDown.bind(hero))
+
+    heroName.innerText = hero.info.name
     portrait.classList.add('portrait')
 
-    health.innerText = "Health: " + info.hp
+    health.innerText = "Health: " + hero.info.hp
 
     section.append(portrait)
     section.append(heroName)
@@ -69,7 +72,7 @@ const createInfoSection = (info) => {
     return section
 }
 
-const createAttributesSection = (attr) => {
+const createAttributesSection = (hero) => {
     const section = document.createElement('section')
 
     const title = document.createElement('h2')
@@ -79,10 +82,10 @@ const createAttributesSection = (attr) => {
 
     const list = document.createElement('ul')
 
-    const str = createLevelController('STR', attr.str)
-    const agi = createLevelController('AGI', attr.agi)
-    const int = createLevelController('INT', attr.int)
-    const cha = createLevelController('CHA', attr.cha)
+    const str = createLevelController('STR', hero.attributes.str)
+    const agi = createLevelController('AGI', hero.attributes.agi)
+    const int = createLevelController('INT', hero.attributes.int)
+    const cha = createLevelController('CHA', hero.attributes.cha)
 
     list.append(str)
     list.append(agi)
@@ -96,7 +99,7 @@ const createAttributesSection = (attr) => {
     return section
 }
 
-const createSkillsSection = (skills) => {
+const createSkillsSection = (hero) => {
     const section = document.createElement('section')
 
     const title = document.createElement('h2')
@@ -107,30 +110,30 @@ const createSkillsSection = (skills) => {
     const list = document.createElement('ul')
 
     const skillsLI = []
-    skillsLI.push(createLevelController('Ironflesh', skills.ironflesh))
-    skillsLI.push(createLevelController('Power Strike', skills.power_strike))
-    skillsLI.push(createLevelController('Power Throw', skills.power_throw))
-    skillsLI.push(createLevelController('Power Draw', skills.power_draw))
-    skillsLI.push(createLevelController('Weapon Master', skills.weapon_master))
-    skillsLI.push(createLevelController('Shield', skills.shield))
-    skillsLI.push(createLevelController('Athletics', skills.athletics))
-    skillsLI.push(createLevelController('Riding', skills.riding))
-    skillsLI.push(createLevelController('Horse Archery', skills.horse_archery))
-    skillsLI.push(createLevelController('Looting', skills.looting))
-    skillsLI.push(createLevelController('Trainer', skills.trainer))
-    skillsLI.push(createLevelController('Tracking', skills.tracking))
-    skillsLI.push(createLevelController('Tactics', skills.tactics))
-    skillsLI.push(createLevelController('Path Finding', skills.path_finding))
-    skillsLI.push(createLevelController('Spotting', skills.spotting))
-    skillsLI.push(createLevelController('Inventory Management', skills.inventory_management))
-    skillsLI.push(createLevelController('Wound Treatment', skills.wound_treatment))
-    skillsLI.push(createLevelController('Surgery', skills.surgery))
-    skillsLI.push(createLevelController('First Aid', skills.first_aid))
-    skillsLI.push(createLevelController('Engineer', skills.engineer))
-    skillsLI.push(createLevelController('Persuasion', skills.persuasion))
-    skillsLI.push(createLevelController('Prisoner Management', skills.prisoner_management))
-    skillsLI.push(createLevelController('Leadership', skills.leadership))
-    skillsLI.push(createLevelController('Trade', skills.trade))
+    skillsLI.push(createLevelController('Ironflesh', hero.skills.ironflesh))
+    skillsLI.push(createLevelController('Power Strike', hero.skills.power_strike))
+    skillsLI.push(createLevelController('Power Throw', hero.skills.power_throw))
+    skillsLI.push(createLevelController('Power Draw', hero.skills.power_draw))
+    skillsLI.push(createLevelController('Weapon Master', hero.skills.weapon_master))
+    skillsLI.push(createLevelController('Shield', hero.skills.shield))
+    skillsLI.push(createLevelController('Athletics', hero.skills.athletics))
+    skillsLI.push(createLevelController('Riding', hero.skills.riding))
+    skillsLI.push(createLevelController('Horse Archery', hero.skills.horse_archery))
+    skillsLI.push(createLevelController('Looting', hero.skills.looting))
+    skillsLI.push(createLevelController('Trainer', hero.skills.trainer))
+    skillsLI.push(createLevelController('Tracking', hero.skills.tracking))
+    skillsLI.push(createLevelController('Tactics', hero.skills.tactics))
+    skillsLI.push(createLevelController('Path Finding', hero.skills.path_finding))
+    skillsLI.push(createLevelController('Spotting', hero.skills.spotting))
+    skillsLI.push(createLevelController('Inventory Management', hero.skills.inventory_management))
+    skillsLI.push(createLevelController('Wound Treatment', hero.skills.wound_treatment))
+    skillsLI.push(createLevelController('Surgery', hero.skills.surgery))
+    skillsLI.push(createLevelController('First Aid', hero.skills.first_aid))
+    skillsLI.push(createLevelController('Engineer', hero.skills.engineer))
+    skillsLI.push(createLevelController('Persuasion', hero.skills.persuasion))
+    skillsLI.push(createLevelController('Prisoner Management', hero.skills.prisoner_management))
+    skillsLI.push(createLevelController('Leadership', hero.skills.leadership))
+    skillsLI.push(createLevelController('Trade', hero.skills.trade))
 
     section.append(title)
     section.append(list)
@@ -145,11 +148,11 @@ const createSkillsSection = (skills) => {
 }
 
 // ymira ---------------------------------------------
-const ymiraPanel = createHeroPanel('yimira-panel')
+const ymiraPanel = createHeroPanel('ymira-panel')
+const ymiraInfo = createInfoSection(ymira)
+const ymiraAttr = createAttributesSection(ymira)
+const ymiraSkills = createSkillsSection(ymira)
 
-const ymiraInfo = createInfoSection(ymira.info)
-const ymiraAttr = createAttributesSection(ymira.attributes)
-const ymiraSkills = createSkillsSection(ymira.skills)
 
 ymiraPanel.append(ymiraInfo)
 ymiraPanel.append(ymiraAttr)
@@ -159,11 +162,11 @@ companions.append(ymiraPanel)
 
 // deshavi ---------------------------------------------
 
-const deshaviPanel = createHeroPanel('yimira-panel')
+const deshaviPanel = createHeroPanel('deshavi-panel')
+const deshaviInfo = createInfoSection(deshavi)
+const deshaviAttr = createAttributesSection(deshavi)
+const deshaviSkills = createSkillsSection(deshavi)
 
-const deshaviInfo = createInfoSection(deshavi.info)
-const deshaviAttr = createAttributesSection(deshavi.attributes)
-const deshaviSkills = createSkillsSection(deshavi.skills)
 
 deshaviPanel.append(deshaviInfo)
 deshaviPanel.append(deshaviAttr)

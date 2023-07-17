@@ -56,6 +56,8 @@ const hero = (info, attributes, skills) => {
             this.info.level++
             this.attributes.points++
             this.skills.points++
+
+            return this.info.level
         },
 
         lvlDown() {
@@ -63,7 +65,9 @@ const hero = (info, attributes, skills) => {
                 this.info.level--
                 this.attributes.points--
                 this.skills.points--
+
             }
+            return this.info.level
         },
 
         upAttribute(attr) {
