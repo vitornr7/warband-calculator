@@ -43,7 +43,7 @@ const createInfoSection = (info) => {
     const heroName = document.createElement('h2')
     const list = document.createElement('ul')
 
-    const level = createLevelController('Level', info.level)
+    const level = createLevelController('Level:', info.level)
     const health = document.createElement('li')
 
     heroName.innerText = info.name
