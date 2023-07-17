@@ -1,9 +1,9 @@
 const companions = document.querySelector('#selected-heroes')
 
-const createHeroPanel = (hero) => {
+const createHeroPanel = (id) => {
     const panel = document.createElement('div')
     panel.classList.add('hero-panel')
-    panel.setAttribute('id', hero)
+    panel.setAttribute('id', id)
 
     return panel
 }
@@ -66,30 +66,78 @@ const createLevelController = (lbl, lvl) => {
 }
 
 const createAttributesSection = (attr) => {
-    const attrSection = document.createElement('section')
+    const section = document.createElement('section')
 
     const title = document.createElement('h2')
+    const points = document.createElement('p')
     title.innerText = "Attributes"
+    points.innerText = "Attribute points: 3"
 
-    const attrList = document.createElement('ul')
+    const list = document.createElement('ul')
+
     const str = createLevelController('STR', attr.str)
     const agi = createLevelController('AGI', attr.agi)
     const int = createLevelController('INT', attr.int)
     const cha = createLevelController('CHA', attr.cha)
 
-    attrList.append(str)
-    attrList.append(agi)
-    attrList.append(int)
-    attrList.append(cha)
+    list.append(str)
+    list.append(agi)
+    list.append(int)
+    list.append(cha)
 
-    attrSection.append(title)
-    attrSection.append(attrList)
+    section.append(title)
+    section.append(list)
+    section.append(points)
 
-    return attrSection
+    return section
 }
 
-const createSkillsSection = () => {
+const createSkillsSection = (skills) => {
+    const section = document.createElement('section')
 
+    const title = document.createElement('h2')
+    const points = document.createElement('p')
+    title.innerText = "Skills"
+    points.innerText = "Skill points: 2"
+
+    const list = document.createElement('ul')
+
+    const skillsLI = []
+    skillsLI.push(createLevelController('Ironflesh', skills.ironflesh))
+    skillsLI.push(createLevelController('Power Strike', skills.power_strike))
+    skillsLI.push(createLevelController('Power Throw', skills.power_throw))
+    skillsLI.push(createLevelController('Power Draw', skills.power_draw))
+    skillsLI.push(createLevelController('Weapon Master', skills.weapon_master))
+    skillsLI.push(createLevelController('Shield', skills.shield))
+    skillsLI.push(createLevelController('Athletics', skills.athletics))
+    skillsLI.push(createLevelController('Riding', skills.riding))
+    skillsLI.push(createLevelController('Horse Archery', skills.horse_archery))
+    skillsLI.push(createLevelController('Looting', skills.looting))
+    skillsLI.push(createLevelController('Trainer', skills.trainer))
+    skillsLI.push(createLevelController('Tracking', skills.tracking))
+    skillsLI.push(createLevelController('Tactics', skills.tactics))
+    skillsLI.push(createLevelController('Path Finding', skills.path_finding))
+    skillsLI.push(createLevelController('Spotting', skills.spotting))
+    skillsLI.push(createLevelController('Inventory Management', skills.inventory_management))
+    skillsLI.push(createLevelController('Wound Treatment', skills.wound_treatment))
+    skillsLI.push(createLevelController('Surgery', skills.surgery))
+    skillsLI.push(createLevelController('First Aid', skills.first_aid))
+    skillsLI.push(createLevelController('Engineer', skills.engineer))
+    skillsLI.push(createLevelController('Persuasion', skills.persuasion))
+    skillsLI.push(createLevelController('Prisoner Management', skills.prisoner_management))
+    skillsLI.push(createLevelController('Leadership', skills.leadership))
+    skillsLI.push(createLevelController('Trade', skills.trade))
+
+    section.append(title)
+    section.append(list)
+
+    skillsLI.forEach(el => {
+        list.append(el)
+    })
+
+    section.append(points)
+
+    return section
 }
 
 const ymira = {
@@ -126,11 +174,61 @@ const ymira = {
 const ymiraPanel = createHeroPanel('yimira-panel')
 
 const ymiraSec = createInfoSection(ymira.info.name)
-const ymiraAttr = createAttributesSection(ymira.attributes)
 const ymiraStats = createStatsSection(ymira.info)
+const ymiraAttr = createAttributesSection(ymira.attributes)
+const ymiraSkills = createSkillsSection(ymira.skills)
 
 ymiraPanel.append(ymiraSec)
 ymiraPanel.append(ymiraStats)
 ymiraPanel.append(ymiraAttr)
+ymiraPanel.append(ymiraSkills)
 
 companions.append(ymiraPanel)
+
+//  ---------------------------------
+
+const deshavi = {
+    info: { name: 'Deshavi', level: 2, hp: 44 },
+    attributes: { str: 8, agi: 9, int: 10, cha: 6 },
+    skills: {
+        ironflesh: 1,
+        power_strike: 0,
+        power_throw: 0,
+        power_draw: 2,
+        weapon_master: 1,
+        shield: 0,
+        athletics: 2,
+        riding: 0,
+        horse_archery: 0,
+        looting: 0,
+        trainer: 0,
+        tracking: 2,
+        tactics: 0,
+        path_finding: 3,
+        spotting: 3,
+        inventory_management: 2,
+        wound_treatment: 0,
+        surgery: 0,
+        first_aid: 0,
+        engineer: 0,
+        persuasion: 0,
+        prisoner_management: 0,
+        leadership: 0,
+        trade: 0
+    }
+}
+
+
+const deshaviPanel = createHeroPanel('deshavi-panel')
+
+const deshaviSec = createInfoSection(deshavi.info.name)
+const deshaviStats = createStatsSection(deshavi.info)
+const deshaviAttr = createAttributesSection(deshavi.attributes)
+const deshaviSkills = createSkillsSection(deshavi.skills)
+
+deshaviPanel.append(deshaviSec)
+deshaviPanel.append(deshaviStats)
+deshaviPanel.append(deshaviAttr)
+deshaviPanel.append(deshaviSkills)
+
+companions.append(deshaviPanel)

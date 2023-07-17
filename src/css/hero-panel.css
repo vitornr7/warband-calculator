@@ -23,18 +23,28 @@ ul {
     border: 2px solid red;
     padding: 10px;
     width: fit-content;
+    margin: 5px;
 }
 
 li,
 .lvl-controller {
     display: flex;
     justify-content: space-between;
-    gap: 15px;
+    gap: 10px;
 }
 
-.lvl-controller div {
+li {
+    border-bottom: 1px solid black;
+}
+
+li .lvl-controller div {
     text-align: end;
     min-width: 2ch;
+}
+
+li:last-child,
+section:last-child {
+    border: none;
 }
 
 button {
@@ -46,6 +56,20 @@ section {
     border-bottom: 1px solid black;
 }
 
-h2 {
+section:nth-child(2) li {
+    border: none;
+}
+
+section:nth-child(2) p {
+    font-weight: normal;
+    text-align: start;
+}
+
+h2,
+p {
     text-align: center;
+}
+
+p {
+    font-weight: bold;
 }
