@@ -24,6 +24,8 @@ body {
 
     border: 2px solid rgb(122, 94, 41);
     border-radius: 15px;
+
+    background-color: rgb(212, 173, 144);
 }
 
 .hero-panel {
@@ -32,6 +34,8 @@ body {
     width: fit-content;
     margin: 5px;
     border-radius: 15px;
+
+    background-color: rgb(219, 219, 185);
 }
 
 .hero-panel li,
