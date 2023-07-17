@@ -3,17 +3,6 @@ const get_info = (name, level) => {
         name,
         level,
         hp: 0,
-
-        lvlDown() {
-            this.level--
-            if (this.level < 1) {
-                this.level = 1
-            }
-        },
-
-        lvlUp() {
-            this.level++
-        }
     }
 }
 
@@ -22,7 +11,8 @@ const get_attributes = (str, agi, int, cha) => {
         str,
         agi,
         int,
-        cha
+        cha,
+        points: 0
     }
 }
 
@@ -51,7 +41,8 @@ const get_skills = (skills) => {
         persuasion: skills.persuasion | 0,
         prisoner_management: skills.prisoner_management | 0,
         leadership: skills.leadership | 0,
-        trade: skills.trade | 0
+        trade: skills.trade | 0,
+        points: 0
     }
 }
 
@@ -59,14 +50,49 @@ const hero = (info, attributes, skills) => {
     return {
         info: get_info(...info),
         attributes: get_attributes(...attributes),
-        skills: get_skills(skills)
+        skills: get_skills(skills),
+
+        lvlUp() {
+            this.info.level++
+            this.attributes.points++
+            this.skills.points++
+        },
+
+        lvlDown() {
+            if (this.info.level > 1) {
+                this.info.level--
+                this.attributes.points--
+                this.skills.points--
+            }
+        },
+
+        upSKill(skill) {
+            if (this.skills.points > 0 && this.skills[skill] < 10) {
+                this.skills[skill]++
+                this.skills.points--
+            }
+        },
+        downSkill(skill) {
+            if (this.skills[skill] > 0) {
+                this.skills[skill]--
+                this.skills.points++
+            }
+        }
     }
 }
 
 // ymira health = 41
 const ymira = hero(["Ymira", 1], [6, 9, 11, 6], { athletics: 1, riding: 3, inventory_management: 3, wound_treatment: 1, surgery: 1, first_aid: 3, trade: 3 })
+
 // deshavi health = 45
 const deshavi = hero(["Deshavi", 2], [8, 9, 10, 6], { ironflesh: 1, power_draw: 2, weapon_master: 1, athletics: 2, tracking: 2, path_finding: 3, spotting: 3, inventory_management: 2 })
+
+for (let i = 0; i < 2; i++)
+    ymira.lvlUp()
+
+for (let i = 0; i < 13; i++)
+    ymira.upSKill('ironflesh')
+
 
 console.log(ymira)
 // console.log(deshavi)

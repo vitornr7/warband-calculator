@@ -183,7 +183,7 @@ companions.append(ymiraPanel)
 //  ---------------------------------
 
 const deshavi = {
-    info: { name: 'Deshavi', level: 2, hp: 44 },
+    info: { name: 'Deshavi', level: 2, hp: 45 },
     attributes: { str: 8, agi: 9, int: 10, cha: 6 },
     skills: {
         ironflesh: 1,
