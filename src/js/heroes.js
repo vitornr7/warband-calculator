@@ -66,6 +66,24 @@ const hero = (info, attributes, skills) => {
             }
         },
 
+        upAttribute(attr) {
+            if (this.attributes.points > 0) {
+                if (attr == 'int') {
+                    this.skills.points++
+                }
+
+                this.attributes[attr]++
+                this.attributes.points--
+            }
+        },
+        downAttribute(attr) {
+            if (attr == 'int')
+                this.skills.points--
+
+            this.attributes[attr]--
+            this.attributes.points++
+        },
+
         upSKill(skill) {
             if (this.skills.points > 0 && this.skills[skill] < 10) {
                 this.skills[skill]++
@@ -82,17 +100,10 @@ const hero = (info, attributes, skills) => {
 }
 
 // ymira health = 41
-const ymira = hero(["Ymira", 1], [6, 9, 11, 6], { athletics: 1, riding: 3, inventory_management: 3, wound_treatment: 1, surgery: 1, first_aid: 3, trade: 3 })
+const ymiraDef = hero(["Ymira", 1], [6, 9, 11, 6], { athletics: 1, riding: 3, inventory_management: 3, wound_treatment: 1, surgery: 1, first_aid: 3, trade: 3 })
+const ymira = { ...ymiraDef }
+
 
 // deshavi health = 45
-const deshavi = hero(["Deshavi", 2], [8, 9, 10, 6], { ironflesh: 1, power_draw: 2, weapon_master: 1, athletics: 2, tracking: 2, path_finding: 3, spotting: 3, inventory_management: 2 })
-
-for (let i = 0; i < 2; i++)
-    ymira.lvlUp()
-
-for (let i = 0; i < 13; i++)
-    ymira.upSKill('ironflesh')
-
-
-console.log(ymira)
-// console.log(deshavi)
+const deshaviDef = hero(["Deshavi", 2], [8, 9, 10, 6], { ironflesh: 1, power_draw: 2, weapon_master: 1, athletics: 2, tracking: 2, path_finding: 3, spotting: 3, inventory_management: 2 })
+const deshavi = { ...deshaviDef }

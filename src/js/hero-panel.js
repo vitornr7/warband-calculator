@@ -24,6 +24,13 @@ const createLevelController = (lbl, lvl) => {
     level.innerText = lvl
     btnAdd.innerText = "+"
 
+    btnAdd.onclick = () => {
+
+    }
+    btnSub.onclick = () => {
+
+    }
+
     lvlPanel.classList.add('lvl-controller')
 
     lvlPanel.append(btnSub)
@@ -137,37 +144,7 @@ const createSkillsSection = (skills) => {
     return section
 }
 
-const ymira = {
-    info: { name: 'Ymira', level: 1, hp: 41 },
-    attributes: { str: 6, agi: 9, int: 11, cha: 6 },
-    skills: {
-        ironflesh: 0,
-        power_strike: 0,
-        power_throw: 0,
-        power_draw: 0,
-        weapon_master: 0,
-        shield: 0,
-        athletics: 1,
-        riding: 3,
-        horse_archery: 0,
-        looting: 0,
-        trainer: 0,
-        tracking: 0,
-        tactics: 0,
-        path_finding: 0,
-        spotting: 0,
-        inventory_management: 3,
-        wound_treatment: 1,
-        surgery: 1,
-        first_aid: 3,
-        engineer: 0,
-        persuasion: 0,
-        prisoner_management: 0,
-        leadership: 0,
-        trade: 3
-    }
-}
-
+// ymira ---------------------------------------------
 const ymiraPanel = createHeroPanel('yimira-panel')
 
 const ymiraInfo = createInfoSection(ymira.info)
@@ -180,41 +157,9 @@ ymiraPanel.append(ymiraSkills)
 
 companions.append(ymiraPanel)
 
-//  ---------------------------------
+// deshavi ---------------------------------------------
 
-const deshavi = {
-    info: { name: 'Deshavi', level: 2, hp: 45 },
-    attributes: { str: 8, agi: 9, int: 10, cha: 6 },
-    skills: {
-        ironflesh: 1,
-        power_strike: 0,
-        power_throw: 0,
-        power_draw: 2,
-        weapon_master: 1,
-        shield: 0,
-        athletics: 2,
-        riding: 0,
-        horse_archery: 0,
-        looting: 0,
-        trainer: 0,
-        tracking: 2,
-        tactics: 0,
-        path_finding: 3,
-        spotting: 3,
-        inventory_management: 2,
-        wound_treatment: 0,
-        surgery: 0,
-        first_aid: 0,
-        engineer: 0,
-        persuasion: 0,
-        prisoner_management: 0,
-        leadership: 0,
-        trade: 0
-    }
-}
-
-
-const deshaviPanel = createHeroPanel('deshavi-panel')
+const deshaviPanel = createHeroPanel('yimira-panel')
 
 const deshaviInfo = createInfoSection(deshavi.info)
 const deshaviAttr = createAttributesSection(deshavi.attributes)
