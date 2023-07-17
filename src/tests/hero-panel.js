@@ -8,35 +8,6 @@ const createHeroPanel = (id) => {
     return panel
 }
 
-const createInfoSection = (name) => {
-    const infoSection = document.createElement('section')
-
-    const portrait = document.createElement('div')
-    const heroName = document.createElement('h2')
-
-    heroName.innerText = name
-    portrait.classList.add('portrait')
-
-    infoSection.append(portrait)
-    infoSection.append(heroName)
-
-    return infoSection
-}
-
-const createStatsSection = (stats) => {
-    const statsSection = document.createElement('section')
-
-    const level = createLevelController('Level', stats.level)
-    const health = document.createElement('p')
-
-    health.innerText = "Health: " + stats.hp
-
-    statsSection.append(level)
-    statsSection.append(health)
-
-    return statsSection
-}
-
 const createLevelController = (lbl, lvl) => {
     const li = document.createElement('li')
 
@@ -63,6 +34,32 @@ const createLevelController = (lbl, lvl) => {
     li.append(lvlPanel)
 
     return li
+}
+
+const createInfoSection = (info) => {
+    const section = document.createElement('section')
+
+    const portrait = document.createElement('div')
+    const heroName = document.createElement('h2')
+    const list = document.createElement('ul')
+
+    const level = createLevelController('Level', info.level)
+    const health = document.createElement('li')
+
+    heroName.innerText = info.name
+    portrait.classList.add('portrait')
+
+    health.innerText = "Health: " + info.hp
+
+    section.append(portrait)
+    section.append(heroName)
+
+    list.append(level)
+    list.append(health)
+
+    section.append(list)
+
+    return section
 }
 
 const createAttributesSection = (attr) => {
@@ -173,13 +170,11 @@ const ymira = {
 
 const ymiraPanel = createHeroPanel('yimira-panel')
 
-const ymiraSec = createInfoSection(ymira.info.name)
-const ymiraStats = createStatsSection(ymira.info)
+const ymiraInfo = createInfoSection(ymira.info)
 const ymiraAttr = createAttributesSection(ymira.attributes)
 const ymiraSkills = createSkillsSection(ymira.skills)
 
-ymiraPanel.append(ymiraSec)
-ymiraPanel.append(ymiraStats)
+ymiraPanel.append(ymiraInfo)
 ymiraPanel.append(ymiraAttr)
 ymiraPanel.append(ymiraSkills)
 
@@ -221,13 +216,11 @@ const deshavi = {
 
 const deshaviPanel = createHeroPanel('deshavi-panel')
 
-const deshaviSec = createInfoSection(deshavi.info.name)
-const deshaviStats = createStatsSection(deshavi.info)
+const deshaviInfo = createInfoSection(deshavi.info)
 const deshaviAttr = createAttributesSection(deshavi.attributes)
 const deshaviSkills = createSkillsSection(deshavi.skills)
 
-deshaviPanel.append(deshaviSec)
-deshaviPanel.append(deshaviStats)
+deshaviPanel.append(deshaviInfo)
 deshaviPanel.append(deshaviAttr)
 deshaviPanel.append(deshaviSkills)
 

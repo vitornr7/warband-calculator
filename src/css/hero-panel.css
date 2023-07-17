@@ -56,13 +56,8 @@ section {
     border-bottom: 1px solid black;
 }
 
-section:nth-child(2) li {
+.hero-panel section:first-child li {
     border: none;
-}
-
-section:nth-child(2) p {
-    font-weight: normal;
-    text-align: start;
 }
 
 h2,
