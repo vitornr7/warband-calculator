@@ -2,7 +2,18 @@ const get_info = (name, level) => {
     return {
         name,
         level,
-        hp: 0
+        hp: 0,
+
+        lvlDown() {
+            this.level--
+            if (this.level < 1) {
+                this.level = 1
+            }
+        },
+
+        lvlUp() {
+            this.level++
+        }
     }
 }
 
@@ -58,4 +69,4 @@ const ymira = hero(["Ymira", 1], [6, 9, 11, 6], { athletics: 1, riding: 3, inven
 const deshavi = hero(["Deshavi", 2], [8, 9, 10, 6], { ironflesh: 1, power_draw: 2, weapon_master: 1, athletics: 2, tracking: 2, path_finding: 3, spotting: 3, inventory_management: 2 })
 
 console.log(ymira)
-console.log(deshavi)
+// console.log(deshavi)
