@@ -30,16 +30,17 @@ const createSkills = (skills) => {
 }
 
 const Hero = (defaults) => {
-    return {
-        defaults: { ...defaults },
-
+    const hero = {
         name: defaults.name,
         level: defaults.level,
         health: defaults.health,
 
         attributes: { ...defaults.attributes, points: 0 },
-        skills: createSkills(defaults.skills)
+        skills: createSkills(defaults.skills),
     }
+    hero['defaults'] = structuredClone(hero)
+
+    return hero
 }
 
 function levelUp(hero) {
@@ -69,6 +70,7 @@ function attributeUp(hero, attr) {
             hero.skills.points++
         }
     }
+    return hero.attributes[attr]
 }
 
 function attributeDown(hero, attr) {
@@ -80,14 +82,25 @@ function attributeDown(hero, attr) {
             hero.skills.points--
         }
     }
+    return hero.attributes[attr]
 }
 
-function skillUp(hero) {
+function skillUp(hero, skill) {
+    if (hero.skills.points > 0 && hero.skills[skill] < 10) {
+        hero.skills[skill]++
+        hero.skills.points--
+    }
 
+    return hero.skills[skill]
 }
 
-function skillDown(hero) {
+function skillDown(hero, skill) {
+    if (hero.skills[skill] > hero.defaults.skills[skill]) {
+        hero.skills[skill]--
+        hero.skills.points++
+    }
 
+    return hero.skills[skill]
 }
 
 // heroes ----------------------------------------------------------
@@ -107,7 +120,3 @@ const deshavi = Hero({
     attributes: { str: 8, agi: 9, int: 10, cha: 6 },
     skills: { ironflesh: 1, power_draw: 2, weapon_master: 1, athletics: 2, tracking: 2, path_finding: 3, spotting: 3, inventory_management: 2 }
 })
-
-// for (let i = 0; i < 5; i++) {
-//     levelUp(ymira)
-// }

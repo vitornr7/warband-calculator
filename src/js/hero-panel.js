@@ -17,13 +17,15 @@ const createLevelController = (lbl, lvl, hero, callbackSub, callbackAdd) => {
     btnAdd.innerText = "+"
 
     btnSub.onclick = () => {
-        level.innerText = callbackSub(hero)
+        level.innerText = callbackSub()
+
         document.querySelector("#" + hero.name + '-attr-lbl').innerText = "Attribute points: " + hero.attributes.points
         document.querySelector("#" + hero.name + '-skill-lbl').innerText = "Skill points: " + hero.skills.points
     }
 
     btnAdd.onclick = () => {
-        level.innerText = callbackAdd(hero)
+        level.innerText = callbackAdd()
+
         document.querySelector("#" + hero.name + '-attr-lbl').innerText = "Attribute points: " + hero.attributes.points
         document.querySelector("#" + hero.name + '-skill-lbl').innerText = "Skill points: " + hero.skills.points
     }
@@ -48,7 +50,7 @@ const createInfoSection = (hero) => {
     const list = document.createElement('ul')
     const health = document.createElement('li')
 
-    const level = createLevelController('Level:', hero.level, hero, levelDown, levelUp)
+    const level = createLevelController('Level:', hero.level, hero, () => levelDown(hero), () => levelUp(hero))
 
     heroName.innerText = hero.name
     portrait.classList.add('portrait')
@@ -78,10 +80,10 @@ const createAttributesSection = (hero) => {
 
     const list = document.createElement('ul')
 
-    const str = createLevelController('STR', hero.attributes.str)
-    const agi = createLevelController('AGI', hero.attributes.agi)
-    const int = createLevelController('INT', hero.attributes.int)
-    const cha = createLevelController('CHA', hero.attributes.cha)
+    const str = createLevelController('STR', hero.attributes.str, hero, () => attributeDown(hero, 'str'), () => attributeUp(hero, 'str'))
+    const agi = createLevelController('AGI', hero.attributes.agi, hero, () => attributeDown(hero, 'agi'), () => attributeUp(hero, 'agi'))
+    const int = createLevelController('INT', hero.attributes.int, hero, () => attributeDown(hero, 'int'), () => attributeUp(hero, 'int'))
+    const cha = createLevelController('CHA', hero.attributes.cha, hero, () => attributeDown(hero, 'cha'), () => attributeUp(hero, 'cha'))
 
     list.append(str)
     list.append(agi)
@@ -106,30 +108,30 @@ const createSkillsSection = (hero) => {
 
     const list = document.createElement('ul')
     const skillsLI = []
-    skillsLI.push(createLevelController('Ironflesh', hero.skills.ironflesh))
-    skillsLI.push(createLevelController('Power Strike', hero.skills.power_strike))
-    skillsLI.push(createLevelController('Power Throw', hero.skills.power_throw))
-    skillsLI.push(createLevelController('Power Draw', hero.skills.power_draw))
-    skillsLI.push(createLevelController('Weapon Master', hero.skills.weapon_master))
-    skillsLI.push(createLevelController('Shield', hero.skills.shield))
-    skillsLI.push(createLevelController('Athletics', hero.skills.athletics))
-    skillsLI.push(createLevelController('Riding', hero.skills.riding))
-    skillsLI.push(createLevelController('Horse Archery', hero.skills.horse_archery))
-    skillsLI.push(createLevelController('Looting', hero.skills.looting))
-    skillsLI.push(createLevelController('Trainer', hero.skills.trainer))
-    skillsLI.push(createLevelController('Tracking', hero.skills.tracking))
-    skillsLI.push(createLevelController('Tactics', hero.skills.tactics))
-    skillsLI.push(createLevelController('Path Finding', hero.skills.path_finding))
-    skillsLI.push(createLevelController('Spotting', hero.skills.spotting))
-    skillsLI.push(createLevelController('Inventory Management', hero.skills.inventory_management))
-    skillsLI.push(createLevelController('Wound Treatment', hero.skills.wound_treatment))
-    skillsLI.push(createLevelController('Surgery', hero.skills.surgery))
-    skillsLI.push(createLevelController('First Aid', hero.skills.first_aid))
-    skillsLI.push(createLevelController('Engineer', hero.skills.engineer))
-    skillsLI.push(createLevelController('Persuasion', hero.skills.persuasion))
-    skillsLI.push(createLevelController('Prisoner Management', hero.skills.prisoner_management))
-    skillsLI.push(createLevelController('Leadership', hero.skills.leadership))
-    skillsLI.push(createLevelController('Trade', hero.skills.trade))
+    skillsLI.push(createLevelController('Ironflesh', hero.skills.ironflesh, hero, () => skillDown(hero, 'ironflesh'), () => skillUp(hero, 'ironflesh')))
+    skillsLI.push(createLevelController('Power Strike', hero.skills.power_strike, hero, () => skillDown(hero, 'power_strike'), () => skillUp(hero, 'power_strike')))
+    skillsLI.push(createLevelController('Power Throw', hero.skills.power_throw, hero, () => skillDown(hero, 'power_throw'), () => skillUp(hero, 'power_throw')))
+    skillsLI.push(createLevelController('Power Draw', hero.skills.power_draw, hero, () => skillDown(hero, 'power_draw'), () => skillUp(hero, 'power_draw')))
+    skillsLI.push(createLevelController('Weapon Master', hero.skills.weapon_master, hero, () => skillDown(hero, 'weapon_master'), () => skillUp(hero, 'weapon_master')))
+    skillsLI.push(createLevelController('Shield', hero.skills.shield, hero, () => skillDown(hero, 'shield'), () => skillUp(hero, 'shield')))
+    skillsLI.push(createLevelController('Athletics', hero.skills.athletics, hero, () => skillDown(hero, 'athletics'), () => skillUp(hero, 'athletics')))
+    skillsLI.push(createLevelController('Riding', hero.skills.riding, hero, () => skillDown(hero, 'riding'), () => skillUp(hero, 'riding')))
+    skillsLI.push(createLevelController('Horse Archery', hero.skills.horse_archery, hero, () => skillDown(hero, 'horse_archery'), () => skillUp(hero, 'horse_archery')))
+    skillsLI.push(createLevelController('Looting', hero.skills.looting, hero, () => skillDown(hero, 'looting'), () => skillUp(hero, 'looting')))
+    skillsLI.push(createLevelController('Trainer', hero.skills.trainer, hero, () => skillDown(hero, 'trainer'), () => skillUp(hero, 'trainer')))
+    skillsLI.push(createLevelController('Tracking', hero.skills.tracking, hero, () => skillDown(hero, 'tracking'), () => skillUp(hero, 'tracking')))
+    skillsLI.push(createLevelController('Tactics', hero.skills.tactics, hero, () => skillDown(hero, 'tactics'), () => skillUp(hero, 'tactics')))
+    skillsLI.push(createLevelController('Path Finding', hero.skills.path_finding, hero, () => skillDown(hero, 'path_finding'), () => skillUp(hero, 'path_finding')))
+    skillsLI.push(createLevelController('Spotting', hero.skills.spotting, hero, () => skillDown(hero, 'spotting'), () => skillUp(hero, 'spotting')))
+    skillsLI.push(createLevelController('Inventory Management', hero.skills.inventory_management, hero, () => skillDown(hero, 'inventory_management'), () => skillUp(hero, 'inventory_management')))
+    skillsLI.push(createLevelController('Wound Treatment', hero.skills.wound_treatment, hero, () => skillDown(hero, 'wound_treatment'), () => skillUp(hero, 'wound_treatment')))
+    skillsLI.push(createLevelController('Surgery', hero.skills.surgery, hero, () => skillDown(hero, 'surgery'), () => skillUp(hero, 'surgery')))
+    skillsLI.push(createLevelController('First Aid', hero.skills.first_aid, hero, () => skillDown(hero, 'first_aid'), () => skillUp(hero, 'first_aid')))
+    skillsLI.push(createLevelController('Engineer', hero.skills.engineer, hero, () => skillDown(hero, 'engineer'), () => skillUp(hero, 'engineer')))
+    skillsLI.push(createLevelController('Persuasion', hero.skills.persuasion, hero, () => skillDown(hero, 'persuasion'), () => skillUp(hero, 'persuasion')))
+    skillsLI.push(createLevelController('Prisoner Management', hero.skills.prisoner_management, hero, () => skillDown(hero, 'prisoner_management'), () => skillUp(hero, 'prisoner_management')))
+    skillsLI.push(createLevelController('Leadership', hero.skills.leadership, hero, () => skillDown(hero, 'leadership'), () => skillUp(hero, 'leadership')))
+    skillsLI.push(createLevelController('Trade', hero.skills.trade, hero, () => skillDown(hero, 'trade'), () => skillUp(hero, 'trade')))
 
     section.append(title)
     section.append(list)
