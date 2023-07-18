@@ -48,13 +48,45 @@ function levelUp(hero) {
     hero.skills.points++
 }
 
-function removeLevel(hero) {
+function levelDown(hero) {
     if (hero.level > hero.defaults.level) {
         hero.level--
         hero.attributes.points--
         hero.skills.points--
     }
 }
+
+function attributeUp(hero, attr) {
+    if (hero.attributes.points > 0) {
+        hero.attributes[attr]++
+        hero.attributes.points--
+
+        if (attr === 'int') {
+            hero.skills.points++
+        }
+    }
+}
+
+function attributeDown(hero, attr) {
+    if (hero.attributes[attr] > hero.defaults.attributes[attr]) {
+        hero.attributes[attr]--
+        hero.attributes.points++
+
+        if (attr === 'int') {
+            hero.skills.points--
+        }
+    }
+}
+
+function skillUp(hero) {
+
+}
+
+function skillDown(hero) {
+
+}
+
+// heroes ----------------------------------------------------------
 
 const ymira = Hero({
     name: "Ymira",
@@ -72,9 +104,6 @@ const deshavi = Hero({
     skills: { ironflesh: 1, power_draw: 2, weapon_master: 1, athletics: 2, tracking: 2, path_finding: 3, spotting: 3, inventory_management: 2 }
 })
 
-for (let i = 0; i < 5; i++) {
-    levelUp(ymira)
-}
-
-
-console.log(ymira)
+// for (let i = 0; i < 5; i++) {
+//     levelUp(ymira)
+// }
