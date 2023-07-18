@@ -1,6 +1,6 @@
 const companions = document.querySelector('#selected-heroes')
 
-const createLevelController = (lbl, lvl, callback) => {
+const createLevelController = (lbl, lvl, hero, callbackSub, callbackAdd) => {
     const li = document.createElement('li')
 
     const label = document.createElement('div')
@@ -15,6 +15,18 @@ const createLevelController = (lbl, lvl, callback) => {
     btnSub.innerText = "-"
     level.innerText = lvl
     btnAdd.innerText = "+"
+
+    btnSub.onclick = () => {
+        level.innerText = callbackSub(hero)
+        document.querySelector("#" + hero.name + '-attr-lbl').innerText = "Attribute points: " + hero.attributes.points
+        document.querySelector("#" + hero.name + '-skill-lbl').innerText = "Skill points: " + hero.skills.points
+    }
+
+    btnAdd.onclick = () => {
+        level.innerText = callbackAdd(hero)
+        document.querySelector("#" + hero.name + '-attr-lbl').innerText = "Attribute points: " + hero.attributes.points
+        document.querySelector("#" + hero.name + '-skill-lbl').innerText = "Skill points: " + hero.skills.points
+    }
 
     lvlPanel.classList.add('lvl-controller')
 
@@ -36,7 +48,7 @@ const createInfoSection = (hero) => {
     const list = document.createElement('ul')
     const health = document.createElement('li')
 
-    const level = createLevelController('Level:', hero.level)
+    const level = createLevelController('Level:', hero.level, hero, levelDown, levelUp)
 
     heroName.innerText = hero.name
     portrait.classList.add('portrait')
@@ -60,7 +72,9 @@ const createAttributesSection = (hero) => {
     const title = document.createElement('h2')
     const points = document.createElement('p')
     title.innerText = "Attributes"
-    points.innerText = "Attribute points: 3"
+    points.innerText = "Attribute points: 0"
+
+    points.setAttribute('id', hero.name + '-attr-lbl')
 
     const list = document.createElement('ul')
 
@@ -87,7 +101,8 @@ const createSkillsSection = (hero) => {
     const title = document.createElement('h2')
     const points = document.createElement('p')
     title.innerText = "Skills"
-    points.innerText = "Skill points: 2"
+    points.innerText = "Skill points: 0"
+    points.setAttribute('id', hero.name + '-skill-lbl')
 
     const list = document.createElement('ul')
     const skillsLI = []

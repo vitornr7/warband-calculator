@@ -46,6 +46,8 @@ function levelUp(hero) {
     hero.level++
     hero.attributes.points++
     hero.skills.points++
+
+    return hero.level
 }
 
 function levelDown(hero) {
@@ -54,6 +56,8 @@ function levelDown(hero) {
         hero.attributes.points--
         hero.skills.points--
     }
+
+    return hero.level
 }
 
 function attributeUp(hero, attr) {
