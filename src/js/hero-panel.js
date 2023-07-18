@@ -108,7 +108,6 @@ const createSkillsSection = (hero) => {
     points.innerText = "Skill points: 2"
 
     const list = document.createElement('ul')
-
     const skillsLI = []
     skillsLI.push(createLevelController('Ironflesh', hero.skills.ironflesh))
     skillsLI.push(createLevelController('Power Strike', hero.skills.power_strike))

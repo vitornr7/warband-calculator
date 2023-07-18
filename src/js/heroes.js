@@ -1,22 +1,4 @@
-const get_info = (name, level) => {
-    return {
-        name,
-        level,
-        hp: 0,
-    }
-}
-
-const get_attributes = (str, agi, int, cha) => {
-    return {
-        str,
-        agi,
-        int,
-        cha,
-        points: 0
-    }
-}
-
-const get_skills = (skills) => {
+const createSkills = (skills) => {
     return {
         ironflesh: skills.ironflesh | 0,
         power_strike: skills.power_strike | 0,
@@ -42,72 +24,57 @@ const get_skills = (skills) => {
         prisoner_management: skills.prisoner_management | 0,
         leadership: skills.leadership | 0,
         trade: skills.trade | 0,
+
         points: 0
     }
 }
 
-const hero = (info, attributes, skills) => {
+const Hero = (defaults) => {
     return {
-        info: get_info(...info),
-        attributes: get_attributes(...attributes),
-        skills: get_skills(skills),
+        defaults: { ...defaults },
 
-        lvlUp() {
-            this.info.level++
-            this.attributes.points++
-            this.skills.points++
+        name: defaults.name,
+        level: defaults.level,
+        health: defaults.health,
 
-            return this.info.level
-        },
-
-        lvlDown() {
-            if (this.info.level > 1) {
-                this.info.level--
-                this.attributes.points--
-                this.skills.points--
-
-            }
-            return this.info.level
-        },
-
-        upAttribute(attr) {
-            if (this.attributes.points > 0) {
-                if (attr == 'int') {
-                    this.skills.points++
-                }
-
-                this.attributes[attr]++
-                this.attributes.points--
-            }
-        },
-        downAttribute(attr) {
-            if (attr == 'int')
-                this.skills.points--
-
-            this.attributes[attr]--
-            this.attributes.points++
-        },
-
-        upSKill(skill) {
-            if (this.skills.points > 0 && this.skills[skill] < 10) {
-                this.skills[skill]++
-                this.skills.points--
-            }
-        },
-        downSkill(skill) {
-            if (this.skills[skill] > 0) {
-                this.skills[skill]--
-                this.skills.points++
-            }
-        }
+        attributes: { ...defaults.attributes, points: 0 },
+        skills: createSkills(defaults.skills)
     }
 }
 
-// ymira health = 41
-const ymiraDef = hero(["Ymira", 1], [6, 9, 11, 6], { athletics: 1, riding: 3, inventory_management: 3, wound_treatment: 1, surgery: 1, first_aid: 3, trade: 3 })
-const ymira = { ...ymiraDef }
+function levelUp(hero) {
+    hero.level++
+    hero.attributes.points++
+    hero.skills.points++
+}
+
+function removeLevel(hero) {
+    if (hero.level > hero.defaults.level) {
+        hero.level--
+        hero.attributes.points--
+        hero.skills.points--
+    }
+}
+
+const ymira = Hero({
+    name: "Ymira",
+    level: 1,
+    health: 41,
+    attributes: { str: 6, agi: 9, int: 11, cha: 6 },
+    skills: { athletics: 1, riding: 3, inventory_management: 3, wound_treatment: 1, surgery: 1, first_aid: 3, trade: 3 }
+})
+
+const deshavi = Hero({
+    name: "Deshavi",
+    level: 2,
+    health: 45,
+    attributes: { str: 8, agi: 9, int: 10, cha: 6 },
+    skills: { ironflesh: 1, power_draw: 2, weapon_master: 1, athletics: 2, tracking: 2, path_finding: 3, spotting: 3, inventory_management: 2 }
+})
+
+for (let i = 0; i < 5; i++) {
+    levelUp(ymira)
+}
 
 
-// deshavi health = 45
-const deshaviDef = hero(["Deshavi", 2], [8, 9, 10, 6], { ironflesh: 1, power_draw: 2, weapon_master: 1, athletics: 2, tracking: 2, path_finding: 3, spotting: 3, inventory_management: 2 })
-const deshavi = { ...deshaviDef }
+console.log(ymira)
