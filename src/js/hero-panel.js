@@ -33,6 +33,23 @@ function updateUi(hero) {
         i += 2
     });
 
+    i = 0
+    skillsArr.forEach(el => {
+        if (canSkillDown(hero, el)) {
+            sec3[i].style.visibility = "visible"
+        } else {
+            sec3[i].style.visibility = "hidden"
+        }
+
+        if (canSkillUp(hero, el)) {
+            sec3[i + 1].style.visibility = "visible"
+        } else {
+            sec3[i + 1].style.visibility = "hidden"
+        }
+        i += 2
+    });
+
+
 }
 
 const createLevelController = (lbl, lvl, hero, callbackSub, callbackAdd) => {
@@ -50,9 +67,6 @@ const createLevelController = (lbl, lvl, hero, callbackSub, callbackAdd) => {
     btnSub.innerText = "-"
     level.innerText = lvl
     btnAdd.innerText = "+"
-
-    // btnSub.style.visibility = "hidden"
-    // btnAdd.style.visibility = "hidden"
 
     btnSub.onclick = () => {
         level.innerText = callbackSub()
@@ -195,12 +209,13 @@ const createHeroPanel = (hero) => {
     panel.append(attr)
     panel.append(skills)
 
+
+    companions.append(panel)
+
+    updateUi(hero)
+
     return panel
 }
 
 const ymiraPanel = createHeroPanel(ymira)
 const deshaviPanel = createHeroPanel(deshavi)
-
-
-companions.append(ymiraPanel)
-companions.append(deshaviPanel)

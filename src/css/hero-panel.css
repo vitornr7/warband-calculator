@@ -25,6 +25,8 @@
     border-radius: 15px;
 
     background-color: rgb(219, 219, 185);
+
+    user-select: none;
 }
 
 .hero-panel li,

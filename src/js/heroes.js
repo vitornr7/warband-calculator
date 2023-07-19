@@ -1,3 +1,9 @@
+const strSkills = ['ironflesh', 'power_strike', 'power_throw', 'power_draw']
+const agiSkills = ['weapon_master', 'shield', 'athletics', 'riding', 'horse_archery', 'looting',]
+const intSkills = ['trainer', 'tracking', 'tactics', 'path_finding', 'spotting', 'inventory_management', 'wound_treatment', 'surgery', 'first_aid', 'engineer', 'persuasion']
+const chaSkills = ['prisoner_management', 'leadership', 'trade']
+const skillsArr = [...strSkills, ...agiSkills, ...intSkills, ...chaSkills]
+
 const createSkills = (skills) => {
     return {
         ironflesh: skills.ironflesh | 0,
@@ -89,19 +95,11 @@ function attributeDown(hero, attr) {
 }
 
 function getAttribute(skill) {
-    const strSkills = ['ironflesh', 'power_strike', 'power_throw', 'power_draw']
-    const agiSkills = ['weapon_master', 'shield', 'athletics', 'riding', 'horse_archery', 'looting',]
-    // const intSkills = ['trainer', 'tracking', 'tactics', 'path_finding', 'spotting', 'inventory_management', 'wound_treatment', 'surgery', 'first_aid', 'engineer', 'persuasion']
-    const chaSkills = ['prisoner_management', 'leadership', 'trade']
-
     if (strSkills.includes(skill))
         return 'str'
 
     if (agiSkills.includes(skill))
         return 'agi'
-
-    // if (intSkills.includes(skill))
-    //     return 'int'
 
     if (chaSkills.includes(skill))
         return 'cha'
@@ -109,20 +107,24 @@ function getAttribute(skill) {
     return 'int'
 }
 
-function skillUp(hero, skill) {
+const canSkillUp = (hero, skill) => {
     if (hero.skills.points > 0 && hero.skills[skill] < 10) {
         const attr = getAttribute(skill)
-        if (hero.skills[skill] < parseInt(hero.attributes[attr] / 3)) {
-            hero.skills[skill]++
-            hero.skills.points--
-        }
+        return hero.skills[skill] < parseInt(hero.attributes[attr] / 3)
+    }
+}
+function skillUp(hero, skill) {
+    if (canSkillUp(hero, skill)) {
+        hero.skills[skill]++
+        hero.skills.points--
     }
 
     return hero.skills[skill]
 }
 
+const canSkillDown = (hero, skill) => hero.skills[skill] > hero.defaults.skills[skill]
 function skillDown(hero, skill) {
-    if (hero.skills[skill] > hero.defaults.skills[skill]) {
+    if (canSkillDown(hero, skill)) {
         hero.skills[skill]--
         hero.skills.points++
     }
