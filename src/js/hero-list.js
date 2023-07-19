@@ -37,6 +37,14 @@ function createHeroLi(hero) {
     heroList.append(li)
 }
 
-heroes.forEach(hero => {
-    createHeroLi(hero)
-});
+const heroes = []
+
+fetch('src/res/heroes.json')
+    .then((response) => response.json())
+    .then(hero => {
+        hero.forEach(h => {
+            h['defaults'] = structuredClone(h)
+            heroes.push(h)
+            createHeroLi(h)
+        });
+    })

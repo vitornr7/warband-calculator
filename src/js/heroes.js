@@ -131,24 +131,3 @@ function skillDown(hero, skill) {
 
     return hero.skills[skill]
 }
-
-// heroes ----------------------------------------------------------
-
-const ymira = Hero({
-    name: "Deshavi",
-    level: 2,
-    health: 45,
-    attributes: { str: 8, agi: 9, int: 10, cha: 6 },
-    skills: { ironflesh: 1, power_draw: 2, weapon_master: 1, athletics: 2, tracking: 2, path_finding: 3, spotting: 3, inventory_management: 2 }
-})
-
-
-const deshavi = Hero({
-    name: "Ymira",
-    level: 1,
-    health: 41,
-    attributes: { str: 6, agi: 9, int: 11, cha: 6 },
-    skills: { athletics: 1, riding: 3, inventory_management: 3, wound_treatment: 1, surgery: 1, first_aid: 3, trade: 3 }
-})
-
-const heroes = [ymira, deshavi]

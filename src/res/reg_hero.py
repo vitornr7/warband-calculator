@@ -9,7 +9,8 @@ hero = {
         "str": 6,
         "agi": 6,
         "int": 6,
-        "cha": 6
+        "cha": 6,
+        "points": 0
     },
 
     "skills": {
@@ -36,7 +37,8 @@ hero = {
         "persuasion": 0,
         "prisoner_management": 0,
         "leadership": 0,
-        "trade": 0
+        "trade": 0,
+        "points": 0
     }
 }
 
