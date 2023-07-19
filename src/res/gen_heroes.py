@@ -90,7 +90,7 @@ def createHero():
         json.dump(data, f)
 
 
-def compress():
+def minify():
     with open('heroes.json') as f:
         data = json.load(f)
     with open("heroes.json", 'w') as f:
@@ -100,9 +100,9 @@ def compress():
 while (1):
     op = input(
         '\n0: quit\n1: create new hero\n2: update hero (TODO)\n5: minify json file\n\nChoice: ')
-    if op == '1':
-        createHero()
     if op == '0':
         break
-    if op == '5':
-        compress()
+    elif op == '1':
+        createHero()
+    elif op == '5':
+        minify()
