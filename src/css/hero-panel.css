@@ -29,6 +29,10 @@
     user-select: none;
 }
 
+.hero-panel li:hover {
+    background-color: rgb(236, 236, 213);
+}
+
 .hero-panel li,
 .lvl-controller {
     display: flex;
