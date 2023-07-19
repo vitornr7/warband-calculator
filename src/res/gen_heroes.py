@@ -98,6 +98,7 @@ def minify():
 
 
 while (1):
+    print('------------------------------------')
     op = input(
         '\n0: quit\n1: create new hero\n2: update hero (TODO)\n5: minify json file\n\nChoice: ')
     if op == '0':
