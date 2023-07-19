@@ -1,4 +1,4 @@
-const companions = document.querySelector('#selected-heroes')
+const selectedHeroes = document.querySelector('#selected-heroes')
 
 function updateUi(hero) {
     const panel = document.querySelector("#" + hero.name + '-panel')
@@ -210,12 +210,7 @@ const createHeroPanel = (hero) => {
     panel.append(skills)
 
 
-    companions.append(panel)
+    selectedHeroes.append(panel)
 
     updateUi(hero)
-
-    return panel
 }
-
-const ymiraPanel = createHeroPanel(ymira)
-const deshaviPanel = createHeroPanel(deshavi)
