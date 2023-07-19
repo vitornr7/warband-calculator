@@ -50,10 +50,22 @@ def createHero():
     for h in hero:
         if h == "attributes":
             for a in hero[h]:
-                hero[h][a] = int(input(a + ": "))
+                if a == 'points':
+                    hero[h][a] = 0
+                    break
+
+                answer = input(a + ": ")
+                if not answer:
+                    print('\n--> invalid ' + a + ' <---')
+                    return
+                hero[h][a] = int(answer)
 
         elif h == "skills":
             for s in hero[h]:
+                if s == 'points':
+                    hero[h][s] = 0
+                    break
+
                 answer = input(s + ": ")
                 if not answer:
                     answer = 0
@@ -63,7 +75,11 @@ def createHero():
             hero[h] = "?"
 
         elif h == "level":
-            hero[h] = int(input(h + ": "))
+            answer = input(h + ": ")
+            if not answer:
+                print('\n ---> invalid level <---')
+                return
+            hero[h] = int(answer)
 
         else:
             hero[h] = input(h + ": ")
@@ -74,9 +90,19 @@ def createHero():
         json.dump(data, f)
 
 
+def compress():
+    with open('heroes.json') as f:
+        data = json.load(f)
+    with open("heroes.json", 'w') as f:
+        json.dump(data, f)
+
+
 while (1):
-    op = input('\n0: quit\n1: create new hero\n2: update hero (TODO)\n\nChoice: ')
+    op = input(
+        '\n0: quit\n1: create new hero\n2: update hero (TODO)\n5: minify json file\n\nChoice: ')
     if op == '1':
         createHero()
     if op == '0':
         break
+    if op == '5':
+        compress()
