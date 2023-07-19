@@ -1,5 +1,40 @@
 const companions = document.querySelector('#selected-heroes')
 
+function updateUi(hero) {
+    const panel = document.querySelector("#" + hero.name + '-panel')
+
+    document.querySelector("#" + hero.name + '-attr-lbl').innerText = "Attribute points: " + hero.attributes.points
+    document.querySelector("#" + hero.name + '-skill-lbl').innerText = "Skill points: " + hero.skills.points
+
+    const sec1 = panel.querySelector('section button:first-of-type')
+    const sec2 = panel.querySelectorAll('section:nth-child(2) button')
+    const sec3 = panel.querySelectorAll('section:nth-child(3) button')
+
+    if (canLvlDown(hero)) {
+        sec1.style.visibility = "visible"
+    } else {
+        sec1.style.visibility = "hidden"
+    }
+
+    let i = 0
+    const atr = ['str', 'agi', 'int', 'cha']
+    atr.forEach(el => {
+        if (canAttrDown(hero, el)) {
+            sec2[i].style.visibility = "visible"
+        } else {
+            sec2[i].style.visibility = "hidden"
+        }
+
+        if (canAttrUp(hero)) {
+            sec2[i + 1].style.visibility = "visible"
+        } else {
+            sec2[i + 1].style.visibility = "hidden"
+        }
+        i += 2
+    });
+
+}
+
 const createLevelController = (lbl, lvl, hero, callbackSub, callbackAdd) => {
     const li = document.createElement('li')
 
@@ -16,18 +51,19 @@ const createLevelController = (lbl, lvl, hero, callbackSub, callbackAdd) => {
     level.innerText = lvl
     btnAdd.innerText = "+"
 
+    // btnSub.style.visibility = "hidden"
+    // btnAdd.style.visibility = "hidden"
+
     btnSub.onclick = () => {
         level.innerText = callbackSub()
 
-        document.querySelector("#" + hero.name + '-attr-lbl').innerText = "Attribute points: " + hero.attributes.points
-        document.querySelector("#" + hero.name + '-skill-lbl').innerText = "Skill points: " + hero.skills.points
+        updateUi(hero)
     }
 
     btnAdd.onclick = () => {
         level.innerText = callbackAdd()
 
-        document.querySelector("#" + hero.name + '-attr-lbl').innerText = "Attribute points: " + hero.attributes.points
-        document.querySelector("#" + hero.name + '-skill-lbl').innerText = "Skill points: " + hero.skills.points
+        updateUi(hero)
     }
 
     lvlPanel.classList.add('lvl-controller')

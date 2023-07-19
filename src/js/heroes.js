@@ -51,8 +51,9 @@ function levelUp(hero) {
     return hero.level
 }
 
+const canLvlDown = hero => hero.level > hero.defaults.level
 function levelDown(hero) {
-    if (hero.level > hero.defaults.level) {
+    if (canLvlDown(hero)) {
         hero.level--
         hero.attributes.points--
         hero.skills.points--
@@ -61,8 +62,9 @@ function levelDown(hero) {
     return hero.level
 }
 
+const canAttrUp = hero => hero.attributes.points > 0
 function attributeUp(hero, attr) {
-    if (hero.attributes.points > 0) {
+    if (canAttrUp(hero)) {
         hero.attributes[attr]++
         hero.attributes.points--
 
@@ -73,8 +75,9 @@ function attributeUp(hero, attr) {
     return hero.attributes[attr]
 }
 
+const canAttrDown = (hero, attr) => hero.attributes[attr] > hero.defaults.attributes[attr]
 function attributeDown(hero, attr) {
-    if (hero.attributes[attr] > hero.defaults.attributes[attr]) {
+    if (canAttrDown(hero, attr)) {
         hero.attributes[attr]--
         hero.attributes.points++
 
