@@ -2,12 +2,12 @@ const heroes = []
 
 fetch('src/res/heroes.json')
     .then((res) => res.json())
-    .then(hero => {
-        hero.forEach(h => {
-            h['defaults'] = structuredClone(h)
-            heroes.push(h)
+    .then(heroArr => {
+        heroArr.forEach(hero => {
+            hero['defaults'] = structuredClone(hero)
+            heroes.push(hero)
 
-            createHeroLi(h)
+            createHeroLi(hero)
         });
     })
     .then(() => {
