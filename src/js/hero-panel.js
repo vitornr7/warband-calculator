@@ -157,38 +157,17 @@ const createSkillsSection = (hero) => {
     points.setAttribute('id', hero.name + '-skill-lbl')
 
     const list = document.createElement('ul')
-    const skillsLI = []
-    skillsLI.push(createLevelController('Ironflesh', hero.skills.ironflesh, hero, () => skillDown(hero, 'ironflesh'), () => skillUp(hero, 'ironflesh')))
-    skillsLI.push(createLevelController('Power Strike', hero.skills.power_strike, hero, () => skillDown(hero, 'power_strike'), () => skillUp(hero, 'power_strike')))
-    skillsLI.push(createLevelController('Power Throw', hero.skills.power_throw, hero, () => skillDown(hero, 'power_throw'), () => skillUp(hero, 'power_throw')))
-    skillsLI.push(createLevelController('Power Draw', hero.skills.power_draw, hero, () => skillDown(hero, 'power_draw'), () => skillUp(hero, 'power_draw')))
-    skillsLI.push(createLevelController('Weapon Master', hero.skills.weapon_master, hero, () => skillDown(hero, 'weapon_master'), () => skillUp(hero, 'weapon_master')))
-    skillsLI.push(createLevelController('Shield', hero.skills.shield, hero, () => skillDown(hero, 'shield'), () => skillUp(hero, 'shield')))
-    skillsLI.push(createLevelController('Athletics', hero.skills.athletics, hero, () => skillDown(hero, 'athletics'), () => skillUp(hero, 'athletics')))
-    skillsLI.push(createLevelController('Riding', hero.skills.riding, hero, () => skillDown(hero, 'riding'), () => skillUp(hero, 'riding')))
-    skillsLI.push(createLevelController('Horse Archery', hero.skills.horse_archery, hero, () => skillDown(hero, 'horse_archery'), () => skillUp(hero, 'horse_archery')))
-    skillsLI.push(createLevelController('Looting', hero.skills.looting, hero, () => skillDown(hero, 'looting'), () => skillUp(hero, 'looting')))
-    skillsLI.push(createLevelController('Trainer', hero.skills.trainer, hero, () => skillDown(hero, 'trainer'), () => skillUp(hero, 'trainer')))
-    skillsLI.push(createLevelController('Tracking', hero.skills.tracking, hero, () => skillDown(hero, 'tracking'), () => skillUp(hero, 'tracking')))
-    skillsLI.push(createLevelController('Tactics', hero.skills.tactics, hero, () => skillDown(hero, 'tactics'), () => skillUp(hero, 'tactics')))
-    skillsLI.push(createLevelController('Path Finding', hero.skills.path_finding, hero, () => skillDown(hero, 'path_finding'), () => skillUp(hero, 'path_finding')))
-    skillsLI.push(createLevelController('Spotting', hero.skills.spotting, hero, () => skillDown(hero, 'spotting'), () => skillUp(hero, 'spotting')))
-    skillsLI.push(createLevelController('Inventory Management', hero.skills.inventory_management, hero, () => skillDown(hero, 'inventory_management'), () => skillUp(hero, 'inventory_management')))
-    skillsLI.push(createLevelController('Wound Treatment', hero.skills.wound_treatment, hero, () => skillDown(hero, 'wound_treatment'), () => skillUp(hero, 'wound_treatment')))
-    skillsLI.push(createLevelController('Surgery', hero.skills.surgery, hero, () => skillDown(hero, 'surgery'), () => skillUp(hero, 'surgery')))
-    skillsLI.push(createLevelController('First Aid', hero.skills.first_aid, hero, () => skillDown(hero, 'first_aid'), () => skillUp(hero, 'first_aid')))
-    skillsLI.push(createLevelController('Engineer', hero.skills.engineer, hero, () => skillDown(hero, 'engineer'), () => skillUp(hero, 'engineer')))
-    skillsLI.push(createLevelController('Persuasion', hero.skills.persuasion, hero, () => skillDown(hero, 'persuasion'), () => skillUp(hero, 'persuasion')))
-    skillsLI.push(createLevelController('Prisoner Management', hero.skills.prisoner_management, hero, () => skillDown(hero, 'prisoner_management'), () => skillUp(hero, 'prisoner_management')))
-    skillsLI.push(createLevelController('Leadership', hero.skills.leadership, hero, () => skillDown(hero, 'leadership'), () => skillUp(hero, 'leadership')))
-    skillsLI.push(createLevelController('Trade', hero.skills.trade, hero, () => skillDown(hero, 'trade'), () => skillUp(hero, 'trade')))
 
     section.append(title)
     section.append(list)
 
-    skillsLI.forEach(el => {
-        list.append(el)
-    })
+    for (const skill in skills) {
+        list.append(createLevelController(skills[skill].name,
+            hero.skills[skills[skill].id],
+            hero,
+            () => skillDown(hero, skills[skill].id),
+            () => skillUp(hero, skills[skill].id)))
+    }
 
     section.append(points)
 

@@ -4,36 +4,51 @@ const intSkills = ['trainer', 'tracking', 'tactics', 'path_finding', 'spotting',
 const chaSkills = ['prisoner_management', 'leadership', 'trade']
 const skillsArr = [...strSkills, ...agiSkills, ...intSkills, ...chaSkills]
 
-const createSkills = (skills) => {
-    return {
-        ironflesh: skills.ironflesh | 0,
-        power_strike: skills.power_strike | 0,
-        power_throw: skills.power_throw | 0,
-        power_draw: skills.power_draw | 0,
-        weapon_master: skills.weapon_master | 0,
-        shield: skills.shield | 0,
-        athletics: skills.athletics | 0,
-        riding: skills.riding | 0,
-        horse_archery: skills.horse_archery | 0,
-        looting: skills.looting | 0,
-        trainer: skills.trainer | 0,
-        tracking: skills.tracking | 0,
-        tactics: skills.tactics | 0,
-        path_finding: skills.path_finding | 0,
-        spotting: skills.spotting | 0,
-        inventory_management: skills.inventory_management | 0,
-        wound_treatment: skills.wound_treatment | 0,
-        surgery: skills.surgery | 0,
-        first_aid: skills.first_aid | 0,
-        engineer: skills.engineer | 0,
-        persuasion: skills.persuasion | 0,
-        prisoner_management: skills.prisoner_management | 0,
-        leadership: skills.leadership | 0,
-        trade: skills.trade | 0,
+const Skill = (id, attr) => {
+    function makeName() {
+        const arr = id.split("_");
 
-        points: 0
+        for (let i = 0; i < arr.length; i++) {
+            arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+
+        }
+        return arr.join(" ");
+    }
+
+    return {
+        id,
+        attr,
+        name: makeName(),
     }
 }
+
+const skills = {
+    ironflesh: Skill('ironflesh', 'str'),
+    power_strike: Skill('power_strike', 'str'),
+    power_throw: Skill('power_throw', 'str'),
+    power_draw: Skill('power_draw', 'str'),
+    weapon_master: Skill('weapon_master', 'agi'),
+    shield: Skill('shield', 'agi'),
+    athletics: Skill('athletics', 'agi'),
+    riding: Skill('riding', 'agi'),
+    horse_archery: Skill('horse_archery', 'agi'),
+    looting: Skill('looting', 'agi'),
+    trainer: Skill('trainer', 'int'),
+    tracking: Skill('tracking', 'int'),
+    tactics: Skill('tactics', 'int'),
+    path_finding: Skill('path_finding', 'int'),
+    spotting: Skill('spotting', 'int'),
+    inventory_management: Skill('inventory_management', 'int'),
+    wound_treatment: Skill('wound_treatment', 'int'),
+    surgery: Skill('surgery', 'int'),
+    first_aid: Skill('first_aid', 'int'),
+    engineer: Skill('engineer', 'int'),
+    persuasion: Skill('persuasion', 'int'),
+    prisoner_management: Skill('prisoner_management', 'cha'),
+    leadership: Skill('leadership', 'cha'),
+    trade: Skill('trade', 'cha'),
+}
+
 
 const Hero = (defaults) => {
     const hero = {
