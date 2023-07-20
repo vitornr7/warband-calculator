@@ -161,12 +161,12 @@ const createSkillsSection = (hero) => {
     section.append(title)
     section.append(list)
 
-    for (const skill in skills) {
-        list.append(createLevelController(skills[skill].name,
-            hero.skills[skills[skill].id],
+    for (const sk in skills) {
+        list.append(createLevelController(skills[sk].name,
+            hero.skills[skills[sk].id],
             hero,
-            () => skillDown(hero, skills[skill].id),
-            () => skillUp(hero, skills[skill].id)))
+            () => skillDown(hero, skills[sk].id),
+            () => skillUp(hero, skills[sk].id)))
     }
 
     section.append(points)
