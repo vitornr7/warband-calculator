@@ -54,4 +54,6 @@ fetch('src/res/heroes.json')
             heroes.push(h)
             createHeroLi(h)
         });
+    }).then(() => {
+        document.querySelector('#hero-list li button').click()
     })
