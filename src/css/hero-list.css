@@ -1,0 +1,41 @@
+#hero-list {
+    list-style-type: none;
+}
+
+#hero-list li {
+    display: flex;
+    margin-bottom: 0.1rem;
+}
+
+#hero-list button {
+    height: 1.4rem;
+}
+
+#hero-list button:first-child {
+    width: 80%;
+    border: 1px solid black;
+    border-radius: 15px 0 0 15px;
+}
+
+#hero-list button:last-child {
+    width: 20%;
+    border: 1px solid black;
+    border-left: 0;
+    border-radius: 0 15px 15px 0;
+    color: red;
+}
+
+.selected-hero {
+    color: green;
+    font-weight: bold;
+}
+
+/* .benched-hero {
+    color: black;
+} */
+
+.selected-x {
+    font-weight: bold;
+}
+
+/* .benched-x {} */

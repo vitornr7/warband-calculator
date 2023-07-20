@@ -15,8 +15,11 @@ function createHeroLi(hero) {
         if (!panel) {
             createHeroPanel(hero)
 
-            btnHero.classList.remove('benched')
-            btnHero.classList.add('selected')
+            // btnHero.classList.remove('benched-hero')
+            // btnX.classList.remove('benched-x')
+
+            btnHero.classList.add('selected-hero')
+            btnX.classList.add('selected-x')
         } else {
             console.log('focus on: ' + hero.name)
         }
@@ -27,8 +30,11 @@ function createHeroLi(hero) {
         if (panel) {
             panel.remove()
 
-            btnHero.classList.remove('selected')
-            btnHero.classList.add('benched')
+            btnHero.classList.remove('selected-hero')
+            btnX.classList.remove('selected-x')
+
+            // btnHero.classList.add('benched-hero')
+            // btnX.classList.add('benched-x')
         }
     }
 
