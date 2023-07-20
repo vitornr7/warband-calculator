@@ -11,31 +11,31 @@
     height: 1.4rem;
 }
 
-#hero-list button:first-child {
+.benched-x {
+    display: none;
+}
+
+.benched-hero {
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+.selected-hero {
     width: 80%;
     border: 1px solid black;
     border-radius: 15px 0 0 15px;
+
+    font-weight: bold;
+    color: green;
 }
 
-#hero-list button:last-child {
+.selected-x {
     width: 20%;
     border: 1px solid black;
     border-left: 0;
     border-radius: 0 15px 15px 0;
+
+    font-weight: bold;
     color: red;
 }
-
-.selected-hero {
-    color: green;
-    font-weight: bold;
-}
-
-/* .benched-hero {
-    color: black;
-} */
-
-.selected-x {
-    font-weight: bold;
-}
-
-/* .benched-x {} */

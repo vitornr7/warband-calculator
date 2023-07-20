@@ -8,15 +8,16 @@ function createHeroLi(hero) {
     btnHero.innerText = hero.name
     btnX.innerText = 'X'
 
-    btnHero.classList.add('benched')
+    btnHero.classList.add('benched-hero')
+    btnX.classList.add('benched-x')
 
     btnHero.onclick = () => {
         const panel = document.querySelector('#' + hero.name + '-panel')
         if (!panel) {
             createHeroPanel(hero)
 
-            // btnHero.classList.remove('benched-hero')
-            // btnX.classList.remove('benched-x')
+            btnHero.classList.remove('benched-hero')
+            btnX.classList.remove('benched-x')
 
             btnHero.classList.add('selected-hero')
             btnX.classList.add('selected-x')
@@ -33,8 +34,8 @@ function createHeroLi(hero) {
             btnHero.classList.remove('selected-hero')
             btnX.classList.remove('selected-x')
 
-            // btnHero.classList.add('benched-hero')
-            // btnX.classList.add('benched-x')
+            btnHero.classList.add('benched-hero')
+            btnX.classList.add('benched-x')
         }
     }
 
