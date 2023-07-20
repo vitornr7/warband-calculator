@@ -43,17 +43,3 @@ function createHeroLi(hero) {
     li.append(btnX)
     heroList.append(li)
 }
-
-const heroes = []
-
-fetch('src/res/heroes.json')
-    .then((response) => response.json())
-    .then(hero => {
-        hero.forEach(h => {
-            h['defaults'] = structuredClone(h)
-            heroes.push(h)
-            createHeroLi(h)
-        });
-    }).then(() => {
-        document.querySelector('#hero-list li button').click()
-    })
