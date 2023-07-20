@@ -1,9 +1,3 @@
-const strSkills = ['ironflesh', 'power_strike', 'power_throw', 'power_draw']
-const agiSkills = ['weapon_master', 'shield', 'athletics', 'riding', 'horse_archery', 'looting',]
-const intSkills = ['trainer', 'tracking', 'tactics', 'path_finding', 'spotting', 'inventory_management', 'wound_treatment', 'surgery', 'first_aid', 'engineer', 'persuasion']
-const chaSkills = ['prisoner_management', 'leadership', 'trade']
-const skillsArr = [...strSkills, ...agiSkills, ...intSkills, ...chaSkills]
-
 const Skill = (id, attr) => {
     function makeName() {
         const arr = id.split("_");
@@ -50,19 +44,19 @@ const skills = {
 }
 
 
-const Hero = (defaults) => {
-    const hero = {
-        name: defaults.name,
-        level: defaults.level,
-        health: defaults.health,
+// const Hero = (defaults) => {
+//     const hero = {
+//         name: defaults.name,
+//         level: defaults.level,
+//         health: defaults.health,
 
-        attributes: { ...defaults.attributes, points: 0 },
-        skills: createSkills(defaults.skills),
-    }
-    hero['defaults'] = structuredClone(hero)
+//         attributes: { ...defaults.attributes, points: 0 },
+//         skills: createSkills(defaults.skills),
+//     }
+//     hero['defaults'] = structuredClone(hero)
 
-    return hero
-}
+//     return hero
+// }
 
 function levelUp(hero) {
     hero.level++
@@ -109,23 +103,9 @@ function attributeDown(hero, attr) {
     return hero.attributes[attr]
 }
 
-function getAttribute(skill) {
-    if (strSkills.includes(skill))
-        return 'str'
-
-    if (agiSkills.includes(skill))
-        return 'agi'
-
-    if (chaSkills.includes(skill))
-        return 'cha'
-
-    return 'int'
-}
-
 const canSkillUp = (hero, skill) => {
     if (hero.skills.points > 0 && hero.skills[skill] < 10) {
-        const attr = getAttribute(skill)
-        return hero.skills[skill] < parseInt(hero.attributes[attr] / 3)
+        return hero.skills[skill] < parseInt(hero.attributes[skills[skill].attr] / 3)
     }
 }
 function skillUp(hero, skill) {

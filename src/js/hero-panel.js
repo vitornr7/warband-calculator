@@ -16,7 +16,9 @@ function updateUi(hero) {
         sec1.style.visibility = "hidden"
     }
 
+    // this i places a neddle on the buttons pairs of a section element
     let i = 0
+
     const atr = ['str', 'agi', 'int', 'cha']
     atr.forEach(el => {
         if (canAttrDown(hero, el)) {
@@ -34,22 +36,20 @@ function updateUi(hero) {
     });
 
     i = 0
-    skillsArr.forEach(el => {
-        if (canSkillDown(hero, el)) {
+    for (sk in skills) {
+        if (canSkillDown(hero, skills[sk].id)) {
             sec3[i].style.visibility = "visible"
         } else {
             sec3[i].style.visibility = "hidden"
         }
 
-        if (canSkillUp(hero, el)) {
+        if (canSkillUp(hero, skills[sk].id)) {
             sec3[i + 1].style.visibility = "visible"
         } else {
             sec3[i + 1].style.visibility = "hidden"
         }
         i += 2
-    });
-
-
+    }
 }
 
 const createLevelController = (lbl, lvl, hero, callbackSub, callbackAdd) => {
