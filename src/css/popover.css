@@ -6,9 +6,9 @@ details[data-popover] {
     user-select: none;
 }
 
-/* inside the "button"/text style - used to give the button size */
+/* inside the "button"/text style  */
 details[data-popover]>summary {
-    padding: 0 4px;
+    padding: 0 0.3rem;
     border-radius: 5px;
     border: 2px solid rgb(122, 94, 41);
     background-color: rgb(212, 173, 144);
