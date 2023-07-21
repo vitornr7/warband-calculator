@@ -6,7 +6,7 @@ function updateUi(hero) {
     document.querySelector("#" + hero.name + '-attr-lbl').innerText = "Attribute points: " + hero.attributes.points
     document.querySelector("#" + hero.name + '-skill-lbl').innerText = "Skill points: " + hero.skills.points
 
-    const sec1 = panel.querySelector('section button:first-of-type')
+    const sec1 = panel.querySelector('.lvl-controller button:first-of-type')
     const sec2 = panel.querySelectorAll('section:nth-child(2) button')
     const sec3 = panel.querySelectorAll('section:nth-child(3) button')
 
@@ -36,7 +36,7 @@ function updateUi(hero) {
     });
 
     i = 0
-    for (sk in skills) {
+    for (const sk in skills) {
         if (canSkillDown(hero, skills[sk].id)) {
             sec3[i].style.visibility = "visible"
         } else {
@@ -58,8 +58,8 @@ const createLevelController = (lbl, lvl, hero, callbackSub, callbackAdd) => {
     const label = document.createElement('div')
 
     const lvlPanel = document.createElement('div')
-    const btnSub = document.createElement('button')
     const level = document.createElement('div')
+    const btnSub = document.createElement('button')
     const btnAdd = document.createElement('button')
 
     label.innerText = lbl
@@ -95,6 +95,7 @@ const createLevelController = (lbl, lvl, hero, callbackSub, callbackAdd) => {
 const createInfoSection = (hero) => {
     const section = document.createElement('section')
 
+    const title = document.createElement('div')
     const portrait = document.createElement('div')
     const heroName = document.createElement('h2')
     const list = document.createElement('ul')
@@ -108,7 +109,10 @@ const createInfoSection = (hero) => {
     health.innerText = "Health: " + hero.health
 
     section.append(portrait)
-    section.append(heroName)
+
+    title.append(heroName)
+    title.classList.add('title')
+    section.append(title)
 
     list.append(level)
     list.append(health)

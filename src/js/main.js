@@ -12,4 +12,5 @@ fetch('src/res/heroes.json')
     })
     .then(() => {
         document.querySelector('#hero-list li button').click()
+        createPlayerOrigins()
     })
