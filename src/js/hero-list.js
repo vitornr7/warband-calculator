@@ -22,7 +22,14 @@ function createHeroLi(hero) {
             btnHero.classList.add('selected-hero')
             btnX.classList.add('selected-x')
         } else {
-            console.log('focus on: ' + hero.name)
+            panel.scrollIntoView({ behavior: "smooth" })
+
+            panel.classList.add('blink')
+            setTimeout(() => {
+                panel.classList.remove('blink')
+                console.log("removeu")
+            }, "2000");
+            console.log(panel)
         }
     }
 
