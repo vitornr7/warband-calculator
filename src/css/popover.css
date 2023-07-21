@@ -1,0 +1,52 @@
+/* popover */
+details[data-popover] {
+    display: inline-block;
+    position: relative;
+
+    user-select: none;
+}
+
+/* inside the "button"/text style - used to give the button size */
+details[data-popover]>summary {
+    padding: 0 4px;
+    border-radius: 5px;
+    border: 2px solid rgb(122, 94, 41);
+    background-color: rgb(212, 173, 144);
+}
+
+details[data-popover]>summary:hover {
+    background-color: rgba(235, 211, 175, 0.863);
+}
+
+/* the popover hidden content */
+details[data-popover]>summary+* {
+    position: absolute;
+    display: block;
+    z-index: 1;
+    width: 350%;
+    border: 2px solid rgb(122, 94, 41);
+    border-radius: 15px;
+    padding: 10px;
+    background-color: rgb(212, 173, 144);
+}
+
+details[data-popover]>*+* {
+    /* hide detail elements that would ruin the popover */
+    display: none;
+}
+
+/* while clicked/focused - inside/text of the button */
+details[data-popover]>summary:focus {
+    outline: none;
+}
+
+details[data-popover]>summary::-webkit-details-marker {
+    display: none;
+}
+
+/* position the pop over */
+details[data-popover="down"]>summary+* {
+    top: calc(0.5rem + 100%);
+    right: 50%;
+    transform: translateX(50%);
+}
