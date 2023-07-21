@@ -7,6 +7,10 @@
     margin-bottom: 0.1rem;
 }
 
+#hero-list button:hover {
+    background-color: white;
+}
+
 #hero-list button {
     height: 1.4rem;
 }
