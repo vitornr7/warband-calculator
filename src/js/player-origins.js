@@ -62,19 +62,23 @@ function createExtrasButton(title, content) {
 }
 
 function createExtraContent(content) {
-    const table = document.createElement('table')
-    const tHead = document.createElement('thead')
-    const tHeadRow = document.createElement('tr')
+    // const table = document.createElement('table')
+    // const tHead = document.createElement('thead')
+    // const tHeadRow = document.createElement('tr')
 
-    const columns = ['option', 'attributes', 'skills']
-    for (let i = 0; i < columns.length; i++) {
-        const title = document.createElement('th')
-        title.innerText = columns[i]
-        tHeadRow.append(title)
-    }
+    // const columns = ['option', 'attributes', 'skills']
+    // for (let i = 0; i < columns.length; i++) {
+    //     const title = document.createElement('th')
+    //     title.innerText = columns[i]
+    //     tHeadRow.append(title)
+    // }
 
-    tHead.append(tHeadRow)
-    table.append(tHead)
+    // tHead.append(tHeadRow)
+    // table.append(tHead)
 
-    return table
+    // return table
+
+    const p = document.createElement('p')
+    p.innerText = 'Work in progress.'
+    return p
 }
