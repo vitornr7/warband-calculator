@@ -33,6 +33,8 @@ function createPlayerOrigins() {
 
 }
 
+const details = []
+
 function createExtrasButton(title, content) {
     const btn = document.createElement('details')
 
@@ -41,6 +43,15 @@ function createExtrasButton(title, content) {
 
     btn.setAttribute('data-popover', 'down')
     btnTitle.innerText = title
+
+    details.push(btn)
+    btn.onclick = () => {
+        console.log(details)
+        details.forEach(el => {
+            if (el !== btn && el.hasAttribute('open'))
+                el.removeAttribute('open')
+        })
+    }
 
     btnContent.append(createExtraContent(content))
 
