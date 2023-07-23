@@ -78,7 +78,7 @@ function attributeUp(hero, attr) {
         hero.attributes[attr]++
         hero.attributes.points--
 
-        if (attr === 'int') {
+        if (attr === attributes.int) {
             hero.skills.points++
         }
     }
@@ -91,7 +91,7 @@ function attributeDown(hero, attr) {
         hero.attributes[attr]--
         hero.attributes.points++
 
-        if (attr === 'int') {
+        if (attr === attributes.int) {
             hero.skills.points--
         }
     }

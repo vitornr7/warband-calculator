@@ -1,26 +1,26 @@
-const origins = {
-    0: {
-        question: 'Your father was a: ',
-        options: {
-            0: { an: 'noble', at: '', sk: '' },
-            1: { an: 'merchant', at: '', sk: '' },
-            2: { an: 'warrior', at: '', sk: '' },
-            3: { an: 'hunter', at: '', sk: '' },
-            4: { an: 'nomad', at: '', sk: '' },
-            5: { an: 'thief', at: '', sk: '' }
-        },
-    },
-    0: {
-        q: 'Your father was: ',
-        a: {
-            0: 'a noble',
-            1: 'a merchant',
-            2: 'a warrior',
-            3: 'a hunter',
-            4: 'a thief',
-        }
-    },
-}
+// const origins = {
+//     0: {
+//         question: 'Your father was a: ',
+//         options: {
+//             0: { an: 'noble', at: '', sk: '' },
+//             1: { an: 'merchant', at: '', sk: '' },
+//             2: { an: 'warrior', at: '', sk: '' },
+//             3: { an: 'hunter', at: '', sk: '' },
+//             4: { an: 'nomad', at: '', sk: '' },
+//             5: { an: 'thief', at: '', sk: '' }
+//         },
+//     },
+//     0: {
+//         q: 'Your father was: ',
+//         a: {
+//             0: 'a noble',
+//             1: 'a merchant',
+//             2: 'a warrior',
+//             3: 'a hunter',
+//             4: 'a thief',
+//         }
+//     },
+// }
 
 
 function createPlayerOrigins() {
