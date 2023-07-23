@@ -134,15 +134,14 @@ const createAttributesSection = (hero) => {
 
     const list = document.createElement('ul')
 
-    const str = createLevelController('STR', hero.attributes.str, hero, () => attributeDown(hero, 'str'), () => attributeUp(hero, 'str'))
-    const agi = createLevelController('AGI', hero.attributes.agi, hero, () => attributeDown(hero, 'agi'), () => attributeUp(hero, 'agi'))
-    const int = createLevelController('INT', hero.attributes.int, hero, () => attributeDown(hero, 'int'), () => attributeUp(hero, 'int'))
-    const cha = createLevelController('CHA', hero.attributes.cha, hero, () => attributeDown(hero, 'cha'), () => attributeUp(hero, 'cha'))
+    for (const attr in attributes) {
+        const atc = createLevelController(attr.toUpperCase(),
+            hero.attributes[attr],
+            hero, () => attributeDown(hero, attr),
+            () => attributeUp(hero, attr))
 
-    list.append(str)
-    list.append(agi)
-    list.append(int)
-    list.append(cha)
+        list.append(atc)
+    }
 
     section.append(title)
     section.append(list)
