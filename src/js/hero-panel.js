@@ -137,7 +137,8 @@ const createAttributesSection = (hero) => {
     for (const attr in attributes) {
         const atc = createLevelController(attr.toUpperCase(),
             hero.attributes[attr],
-            hero, () => attributeDown(hero, attr),
+            hero,
+            () => attributeDown(hero, attr),
             () => attributeUp(hero, attr))
 
         list.append(atc)
