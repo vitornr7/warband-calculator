@@ -37,22 +37,6 @@ for (const sk in skills) {
     skills[sk]['name'] = arr.join(" ");
 }
 
-
-
-// const Hero = (defaults) => {
-//     const hero = {
-//         name: defaults.name,
-//         level: defaults.level,
-//         health: defaults.health,
-
-//         attributes: { ...defaults.attributes, points: 0 },
-//         skills: createSkills(defaults.skills),
-//     }
-//     hero['defaults'] = structuredClone(hero)
-
-//     return hero
-// }
-
 function levelUp(hero) {
     hero.level++
     hero.attributes.points++
@@ -62,6 +46,7 @@ function levelUp(hero) {
 }
 
 const canLvlDown = hero => hero.level > hero.defaults.level
+
 function levelDown(hero) {
     if (canLvlDown(hero)) {
         hero.level--
@@ -73,6 +58,7 @@ function levelDown(hero) {
 }
 
 const canAttrUp = hero => hero.attributes.points > 0
+
 function attributeUp(hero, attr) {
     if (canAttrUp(hero)) {
         hero.attributes[attr]++
@@ -86,6 +72,7 @@ function attributeUp(hero, attr) {
 }
 
 const canAttrDown = (hero, attr) => hero.attributes[attr] > hero.defaults.attributes[attr]
+
 function attributeDown(hero, attr) {
     if (canAttrDown(hero, attr)) {
         hero.attributes[attr]--
@@ -103,6 +90,7 @@ const canSkillUp = (hero, skill) => {
         return hero.skills[skill] < parseInt(hero.attributes[skills[skill].attr] / 3)
     }
 }
+
 function skillUp(hero, skill) {
     if (canSkillUp(hero, skill)) {
         hero.skills[skill]++
@@ -113,6 +101,7 @@ function skillUp(hero, skill) {
 }
 
 const canSkillDown = (hero, skill) => hero.skills[skill] > hero.defaults.skills[skill]
+
 function skillDown(hero, skill) {
     if (canSkillDown(hero, skill)) {
         hero.skills[skill]--
