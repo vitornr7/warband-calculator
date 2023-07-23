@@ -27,9 +27,7 @@ function createHeroLi(hero) {
             panel.classList.add('blink')
             setTimeout(() => {
                 panel.classList.remove('blink')
-                console.log("removeu")
             }, "2000");
-            console.log(panel)
         }
     }
 

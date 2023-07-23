@@ -46,7 +46,6 @@ function createExtrasButton(title, content) {
 
     details.push(btn)
     btn.onclick = () => {
-        console.log(details)
         details.forEach(el => {
             if (el !== btn && el.hasAttribute('open'))
                 el.removeAttribute('open')

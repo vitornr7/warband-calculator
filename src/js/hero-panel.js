@@ -19,9 +19,8 @@ function updateUi(hero) {
     // this i places a neddle on the buttons pairs of a section element
     let i = 0
 
-    const atr = ['str', 'agi', 'int', 'cha']
-    atr.forEach(el => {
-        if (canAttrDown(hero, el)) {
+    for (const attr in attributes) {
+        if (canAttrDown(hero, attr)) {
             sec2[i].style.visibility = "visible"
         } else {
             sec2[i].style.visibility = "hidden"
@@ -33,17 +32,18 @@ function updateUi(hero) {
             sec2[i + 1].style.visibility = "hidden"
         }
         i += 2
-    });
+    }
 
     i = 0
+
     for (const sk in skills) {
-        if (canSkillDown(hero, skills[sk].id)) {
+        if (canSkillDown(hero, sk)) {
             sec3[i].style.visibility = "visible"
         } else {
             sec3[i].style.visibility = "hidden"
         }
 
-        if (canSkillUp(hero, skills[sk].id)) {
+        if (canSkillUp(hero, sk)) {
             sec3[i + 1].style.visibility = "visible"
         } else {
             sec3[i + 1].style.visibility = "hidden"
@@ -167,10 +167,10 @@ const createSkillsSection = (hero) => {
 
     for (const sk in skills) {
         list.append(createLevelController(skills[sk].name,
-            hero.skills[skills[sk].id],
+            hero.skills[sk],
             hero,
-            () => skillDown(hero, skills[sk].id),
-            () => skillUp(hero, skills[sk].id)))
+            () => skillDown(hero, sk),
+            () => skillUp(hero, sk)))
     }
 
     section.append(points)
