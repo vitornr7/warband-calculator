@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            padding: 15px;
+            user-select: none;
+        }
+
+        tbody tr:hover {
+            background-color: aliceblue;
+        }
+
+        .selected {
+            background-color: rgb(212, 241, 184);
+            font-weight: bold;
+        }
+
+        .selected:hover {
+            background-color: rgba(0, 128, 0, 0.5);
+            font-weight: bold;
+        }
+
+        tbody td:first-child {
+            color: red;
+        }
+
+        .selected td:first-child {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Bonus</th>
+                <th>INT Requirement</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr id="alixenus" onclick="clicked(this.id)">
+                <td>X</td>
+                <td>The Life of Alixenus the Great</td>
+                <td>+1 Leadership</td>
+                <td>7</td>
+            </tr>
+
+            <tr id="arms" class="selected" onclick="clicked(this.id)">
+                <td>V</td>
+                <td>Manual of Arms</td>
+                <td>+1 Trainer</td>
+                <td>0</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        // const b1 = document.querySelector('#alixenus')
+
+
+        function clicked(id) {
+            const b = document.querySelector("#" + id)
+            console.log(b)
+
+            if (b.classList.contains('selected')) {
+                b.classList.remove('selected')
+
+                b.querySelector('td').innerText = 'X'
+            }
+            else {
+                b.classList.add('selected')
+                b.querySelector('td').innerText = 'V'
+            }
+        }
+
+    </script>
+</body>
+
+</html>
