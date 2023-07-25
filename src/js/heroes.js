@@ -28,6 +28,8 @@ const skills = {
 }
 
 for (const sk in skills) {
+    skills[sk]['id'] = sk;
+
     const arr = sk.split("_");
 
     for (let i = 0; i < arr.length; i++) {

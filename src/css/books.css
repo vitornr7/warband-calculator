@@ -1,0 +1,46 @@
+table,
+th,
+td {
+    border: 2px solid black;
+    border-collapse: collapse;
+    text-align: center;
+    padding: 2px 8px;
+    user-select: none;
+
+    /* font-size: 0.8rem; */
+    white-space: nowrap;
+}
+
+th {
+    background-color: rgb(122, 94, 41);
+    white-space: initial;
+}
+
+td {
+    text-align: left;
+}
+
+td:last-child {
+    text-align: center;
+}
+
+tbody tr:hover {
+    background-color: rgba(235, 211, 175, 0.863);
+    ;
+}
+
+.selected-book {
+    background-color: rgb(136, 173, 126);
+}
+
+.selected-book:hover {
+    background-color: rgba(218, 240, 204, 0.87)
+}
+
+tbody td:first-child {
+    color: red;
+}
+
+.selected-book td:first-child {
+    color: green;
+}

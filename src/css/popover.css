@@ -25,7 +25,6 @@ details[data-popover]>summary+* {
     position: absolute;
     display: block;
     z-index: 1;
-    width: 350%;
     border: 2px solid rgb(122, 94, 41);
     border-radius: 15px;
     padding: 10px;
@@ -50,5 +49,5 @@ details[data-popover]>summary::-webkit-details-marker {
 details[data-popover="down"]>summary+* {
     top: calc(0.3rem + 100%);
     right: 50%;
-    transform: translateX(50%);
+    transform: translateX(80%);
 }
