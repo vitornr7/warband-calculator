@@ -159,7 +159,7 @@ function createBooksTable() {
         intRequired.innerText = books[bk].int
 
         tr.onclick = () => {
-            books[bk].selected = bookSkillUp(books[bk])
+            books[bk].selected = selectBook(books[bk])
 
             if (books[bk].selected === 'int') {
                 intRequired.classList.add('blink')

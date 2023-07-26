@@ -1,5 +1,7 @@
 const heroes = []
 
+let player
+
 fetch('src/res/heroes.json')
     .then((res) => res.json())
     .then(heroArr => {
@@ -13,4 +15,6 @@ fetch('src/res/heroes.json')
     .then(() => {
         document.querySelector('#hero-list li button').click()
         createPlayerOrigins()
+
+        player = heroes[0]
     })
