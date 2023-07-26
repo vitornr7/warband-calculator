@@ -26,52 +26,62 @@ const books = {
     alixenus: {
         name: 'The Life of Alixenus the Great',
         bonus: skills.leadership.id,
-        int: 7
+        int: 7,
+        selected: false
     },
     rhetorica: {
         name: 'Rhetorica ad Herennium',
         bonus: skills.persuasion.id,
-        int: 8
+        int: 8,
+        selected: false
     },
     fighting: {
         name: 'On the Art of Fighting with Swords',
         bonus: skills.weapon_master.id,
-        int: 9
+        int: 9,
+        selected: false
     },
     militari: {
         name: 'De Re Militari',
         bonus: skills.tactics.id,
-        int: 9
+        int: 9,
+        selected: false
     },
     logic: {
         name: 'Essays on Logic',
         bonus: attributes.int,
-        int: 10
+        int: 10,
+        selected: false
     },
     value: {
         name: 'A Treatise on the Value of Things',
         bonus: skills.trade.id,
-        int: 11
+        int: 11,
+        selected: false
     },
     mechanical: {
         name: 'Method of Mechanical Theorems',
         bonus: skills.engineer.id,
-        int: 12
+        int: 12,
+        selected: false
     },
     manual: {
         name: 'Manual of Arms',
         bonus: skills.trainer.id,
-        int: 0
+        int: 0,
+        selected: false
     },
     healing: {
         name: 'The Book of Healing',
         bonus: skills.wound_treatment.id,
-        int: 0
+        int: 0,
+        selected: false
     },
     surgery: {
         name: 'The Great Book of Surgery',
         bonus: skills.surgery.id,
-        int: 0
+        int: 0,
+        selected: false
     }
 }
 

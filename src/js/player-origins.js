@@ -1,4 +1,21 @@
-const fs = require('fs');
+function bookSkillUp(book) {
+    const player = heroes[0]
 
-let rawdata = fs.readFileSync('C:\\Users\\nrvit\\arqs\\prog\\projs\\warband-calculator\\src\\res\\heroes.json');
-let player = JSON.parse(rawdata)[0];
+    if (!book.selected) {
+        if (player.attributes.int >= book.int) {
+            if (player.skills[book.bonus] === 10) {
+                player.skills.points++
+            } else {
+                player.skills[book.bonus]++
+            }
+
+            player.defaults.skills[book.bonus]++
+
+            book.selected = true
+
+            document.querySelector('#Player-' + book.bonus).innerText = player.skills[book.bonus]
+
+            updateUi(player)
+        }
+    }
+}

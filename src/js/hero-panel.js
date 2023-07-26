@@ -58,24 +58,29 @@ const createLevelController = (lbl, lvl, hero, callbackSub, callbackAdd) => {
     const label = document.createElement('div')
 
     const lvlPanel = document.createElement('div')
-    const level = document.createElement('div')
+    const lblLevel = document.createElement('div')
     const btnSub = document.createElement('button')
     const btnAdd = document.createElement('button')
 
-    label.innerText = lbl
+    if (lbl.id)
+        lblLevel.setAttribute('id', hero.name + "-" + lbl.id)
+    else
+        lblLevel.setAttribute('id', hero.name + "-" + lbl.name)
+
+    label.innerText = lbl.name
 
     btnSub.innerText = "-"
-    level.innerText = lvl
+    lblLevel.innerText = lvl
     btnAdd.innerText = "+"
 
     btnSub.onclick = () => {
-        level.innerText = callbackSub()
+        lblLevel.innerText = callbackSub()
 
         updateUi(hero)
     }
 
     btnAdd.onclick = () => {
-        level.innerText = callbackAdd()
+        lblLevel.innerText = callbackAdd()
 
         updateUi(hero)
     }
@@ -83,7 +88,7 @@ const createLevelController = (lbl, lvl, hero, callbackSub, callbackAdd) => {
     lvlPanel.classList.add('lvl-controller')
 
     lvlPanel.append(btnSub)
-    lvlPanel.append(level)
+    lvlPanel.append(lblLevel)
     lvlPanel.append(btnAdd)
 
     li.append(label)
@@ -101,7 +106,7 @@ const createInfoSection = (hero) => {
     const list = document.createElement('ul')
     const health = document.createElement('li')
 
-    const level = createLevelController('Level:', hero.level, hero, () => levelDown(hero), () => levelUp(hero))
+    const level = createLevelController({ name: 'Level:' }, hero.level, hero, () => levelDown(hero), () => levelUp(hero))
 
     heroName.innerText = hero.name
     portrait.classList.add('portrait')
@@ -135,7 +140,7 @@ const createAttributesSection = (hero) => {
     const list = document.createElement('ul')
 
     for (const attr in attributes) {
-        const atc = createLevelController(attr.toUpperCase(),
+        const atc = createLevelController({ name: attr.toUpperCase() },
             hero.attributes[attr],
             hero,
             () => attributeDown(hero, attr),
@@ -166,7 +171,7 @@ const createSkillsSection = (hero) => {
     section.append(list)
 
     for (const sk in skills) {
-        list.append(createLevelController(skills[sk].name,
+        list.append(createLevelController(skills[sk],
             hero.skills[sk],
             hero,
             () => skillDown(hero, sk),
