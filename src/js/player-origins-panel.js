@@ -159,14 +159,20 @@ function createBooksTable() {
         intRequired.innerText = books[bk].int
 
         tr.onclick = () => {
-            if (tr.classList.contains('selected-book')) {
-                tr.classList.remove('selected-book')
+            books[bk].selected = bookSkillUp(books[bk])
 
-                tr.querySelector('td').innerText = 'X'
+            if (books[bk].selected === 'int') {
+                intRequired.classList.add('blink')
+                setTimeout(() => {
+                    intRequired.classList.remove('blink')
+                }, "2000");
             }
-            else {
+            else if (books[bk].selected === 'selected') {
                 tr.classList.add('selected-book')
                 tr.querySelector('td').innerText = 'V'
+            } else {
+                tr.classList.remove('selected-book')
+                tr.querySelector('td').innerText = 'X'
             }
         }
 
