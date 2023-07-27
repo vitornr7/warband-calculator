@@ -47,6 +47,7 @@ function attributeDown(hero, attr) {
                 if (hero.attributes.int === 10 && books.logic.selected) {
                     deselectBook('logic')
                 }
+                // exact same on two places...
                 for (const bk in books) {
                     if (books[bk].selected && hero.attributes.int < books[bk].int) {
                         deselectBook(bk)

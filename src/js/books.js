@@ -44,6 +44,13 @@ function deselectBook(book) {
         player.defaults.attributes.int--
         // player.skills.points--
 
+        // exact same on two places
+        for (const bk in books) {
+            if (books[bk].selected && player.attributes.int < books[bk].int) {
+                deselectBook(bk)
+            }
+        }
+
         updateAttrLabel()
     } else {
         player.defaults.skills[books[book].bonus]--

@@ -47,7 +47,9 @@ details[data-popover]>summary::-webkit-details-marker {
 
 /* position the pop over */
 details[data-popover="down"]>summary+* {
-    top: calc(0.3rem + 100%);
-    right: 50%;
-    transform: translateX(80%);
+    /* top: calc(0.3rem + 100%);
+    right: 50%; */
+    /* left: calc(1rem + 100%);
+    bottom: 50%; */
+    transform: translateX(-10%) translateY(2%);
 }
