@@ -43,12 +43,16 @@ function attributeDown(hero, attr) {
             hero.skills.points--
 
             // check for books the player cannot use anymore
-            if (hero.name === "Player")
+            if (hero.name === "Player") {
+                if (hero.attributes.int === 10 && books.logic.selected) {
+                    deselectBook('logic')
+                }
                 for (const bk in books) {
                     if (books[bk].selected && hero.attributes.int < books[bk].int) {
                         deselectBook(bk)
                     }
                 }
+            }
         }
     }
     return hero.attributes[attr]

@@ -54,3 +54,8 @@ tbody td:first-child {
         background-color: red;
     }
 }
+
+.book-on {
+    color: green;
+    font-weight: bold;
+}

@@ -58,11 +58,27 @@ function deselectBook(book) {
 }
 
 function updateSkillLabel(book) {
-    document.querySelector('#Player-' + books[book].bonus).innerText = player.skills[books[book].bonus]
+    const lbl = document.querySelector('#Player-' + books[book].bonus)
+    lbl.innerText = player.skills[books[book].bonus]
+
+    if (books[book].selected) {
+        lbl.classList.add('book-on')
+    } else {
+        lbl.classList.remove('book-on')
+    }
+
     updateUi(player)
 }
 
 function updateAttrLabel() {
-    document.querySelector('#Player-INT').innerText = player.attributes.int
+    const lbl = document.querySelector('#Player-INT')
+    lbl.innerText = player.attributes.int
+
+    if (books.logic.selected) {
+        lbl.classList.add('book-on')
+    } else {
+        lbl.classList.remove('book-on')
+    }
+
     updateUi(player)
 }
