@@ -1,65 +1,64 @@
 function selectBook(book) {
-    if (player.attributes.int < book.int) {
-        return 'int'
+    const tr = document.querySelector('#' + book)
+
+    if (player.attributes.int < books[book].int) {
+        tr.classList.add('blink')
+        setTimeout(() => {
+            tr.classList.remove('blink')
+        }, "2000");
+
+        return
     }
 
-    if (book.selected === false || book.selected === 'int') {
-        if (book.bonus === 'int') {
-            bookAttrUp(book)
+    if (!books[book].selected) {
+        books[book].selected = true
+
+        if (books[book].bonus === 'int') {
+            player.attributes.int++
+            player.defaults.attributes.int++
+            // player.skills.points++
+
+            updateAttrLabel()
         } else {
-            bookSkillUp(book)
+            if (player.skills[books[book].bonus] === 10) {
+                player.skills.points++
+            } else {
+                player.skills[books[book].bonus]++
+            }
+
+            player.defaults.skills[books[book].bonus]++
+
+            updateSkillLabel(book)
         }
-
-        updateUi(player)
-        return 'selected'
     }
 
-    if (book.bonus === 'int') {
-        bookAttrDown(book)
+    tr.classList.add('selected-book')
+    tr.querySelector('td').innerText = 'V'
+}
+
+function deselectBook(book) {
+    books[book].selected = false
+
+    if (books[book].bonus === 'int') {
+        player.attributes.int--
+        player.defaults.attributes.int--
+        // player.skills.points--
+
+        updateAttrLabel()
     } else {
-        bookSkillDown(book)
+        player.defaults.skills[books[book].bonus]--
+        player.skills[books[book].bonus]--
+
+        updateSkillLabel(book)
     }
 
-    return false
-}
-
-function bookAttrUp(book) {
-    player.attributes.int++
-    player.defaults.attributes.int++
-    // player.skills.points++
-
-    updateAttrLabel()
-}
-
-function bookAttrDown(book) {
-    player.attributes.int--
-    player.defaults.attributes.int--
-    // player.skills.points--
-
-    updateAttrLabel()
-}
-
-function bookSkillUp(book) {
-    if (player.skills[book.bonus] === 10) {
-        player.skills.points++
-    } else {
-        player.skills[book.bonus]++
-    }
-
-    player.defaults.skills[book.bonus]++
-
-    updateSkillLabel(book)
-}
-
-function bookSkillDown(book) {
-    player.defaults.skills[book.bonus]--
-    player.skills[book.bonus]--
-
-    updateSkillLabel(book)
+    const tr = document.querySelector('#' + book)
+    tr.classList.remove('selected-book')
+    tr.querySelector('td').innerText = 'X'
 }
 
 function updateSkillLabel(book) {
-    document.querySelector('#Player-' + book.bonus).innerText = player.skills[book.bonus]
+    document.querySelector('#Player-' + books[book].bonus).innerText = player.skills[books[book].bonus]
     updateUi(player)
 }
 

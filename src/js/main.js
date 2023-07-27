@@ -1,7 +1,5 @@
 const heroes = []
 
-let player
-
 fetch('src/res/heroes.json')
     .then((res) => res.json())
     .then(heroArr => {
