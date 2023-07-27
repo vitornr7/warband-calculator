@@ -52,7 +52,7 @@ function createBooksTable() {
         tHeadRow.append(th)
     });
 
-    // rows
+    // book rows
     for (const bk in books) {
         const tr = document.createElement('tr')
         tr.setAttribute('id', bk)

@@ -44,3 +44,13 @@ tbody td:first-child {
 .selected-book td:first-child {
     color: green;
 }
+
+.no-int {
+    animation: no-int 1s linear infinite !important;
+}
+
+@keyframes no-int {
+    50% {
+        background-color: red;
+    }
+}
