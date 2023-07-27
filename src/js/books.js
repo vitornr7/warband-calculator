@@ -2,11 +2,12 @@ function selectBook(book) {
     const tr = document.querySelector('#' + book)
 
     if (player.attributes.int < books[book].int) {
-        tr.querySelector('td:last-child').classList.add('no-int')
-        setTimeout(() => {
-            tr.querySelector('td:last-child').classList.remove('no-int')
-        }, "2000");
-
+        if (!tr.querySelector('td:last-child').classList.contains('no-int')) {
+            tr.querySelector('td:last-child').classList.add('no-int')
+            setTimeout(() => {
+                tr.querySelector('td:last-child').classList.remove('no-int')
+            }, "500");
+        }
         return
     }
 

@@ -46,11 +46,11 @@ tbody td:first-child {
 }
 
 .no-int {
-    animation: no-int 1s linear infinite !important;
+    animation: no-int 0.5s linear infinite !important;
 }
 
 @keyframes no-int {
-    50% {
+    15% {
         background-color: red;
     }
 }
